@@ -1,0 +1,33 @@
+1) I will exhibit professionalism at Techtonica by remaining punctual, valuing the time and intelligence  of myself and others, working well with my teammates, and being communicative when things need to be communicated. The only major difference in a full-time engineering job setting will be the emphasis on punctuality. Having worked with dozens of engineers previously, I can already guarantee that my ability to be on-time will shock and awe nearly any team I join
+
+2) Let the technical program manager(s), my pairing partner and anyone else who will be impacted know immediately.
+
+3) Depending on how far along the project was, I'd do a few different things. The first is to bring it up to the rest of the group, and anyone managing or reporting to us who should be aware. If it's early, discussing any problems with the distribution of the workload should be a priority. If it's too far along to take preventative action, informing everyone involved will, at minimum, keep my group from being blindsided and allow accountability for a delay to fall on the right shoulders. My group could also brainstorm how to get the project finished on time, together. Going into crunch alone could work in the short-term, but isn't a healthy habit to build long-term.
+
+4) Reading, then writing what I've read. Kinetic/practical memory helps with retrieving concepts from storage faster, but isn't very useful when I'm learning a concept in the first place.
+
+5) Growth mindset is not having fixed attitudes about how much of your knowledge and intelligence has been pre-determined, and seeing learning as something that happens in the present, rather than in the past or future.
+
+6) I'm using macOS, the other big 2 OSs are Windows and Linux. Linux is a little different from the first two, because it's less of one operating system and more of a kernal that most non-Mac and non-Windows operating systems/distributions are built on.
+
+7) To help the box of electric 0s and 1s (hardware) communicate with humans, and also to translate the letters we write to it (software).
+
+8) Google it, drink some water, take a walk, come back, see if it makes better sense, google it again, move to the next-prioity item on my task list, google it again after that,  talk to a peer about it, talk to an authority figure about it. It *should* be resolved during the second or third googling.
+
+9) Mostly using Twitter, honestly. I have a pretty wide network of engineers who want me to succeed, and have already met up irl with two this month (before the program began, so we didn't talk shop). I also have my mentor Jenn as a resource, and can find meetups online and share them/plan to attend with other members of my cohort. LinkedIn and Twitter DMs will be the best ways to reinforce new/returning connections.
+
+10) Open stance, feet pointed toward people you are actively engaged with, away from people you are exiting a conversation with, leaving room to join when in a group conversation, subtle mirroring of anyone you are listening to. Body language is the best way to communicate that you are present and enjoying the company you find yourself in, as well as to exit social interactions gracefully and without feeling awkward. Even the best conversations have to end!
+
+11) "That doesn't make sense" is a statement that helps no one. Whatever "that" is, it is being subjected to a binary evaluation and doesn't leave room for discussion or learning on either end. "I don't understand this at face value, could you explain some of the underlying logic?" is the same statement, phrased in a way that removes blame and allows for learning, with grace. What makes this *really* fun is that identical words can be effective or ineffective, depending on context. "That doesn't make sense" is suddenly effective, when it's followed with "to me. Could we quickly walk through it together?" Effective word choice leads to effective communication.
+
+12) Model accountability, communicate effectively, act with integrity, and deliver consistently. The rest of it is time.
+
+13) Wires and waves! Copper and fiber for hardwired connections, radio waves for things like wifi and bluetooth.
+
+14) Information is transmitted in binary signals (a light being on or off on a fiber cable, for instance) through the physical medium, using a variety of protocols to read, transport and interpret the signals. internet  protocol, hypertext transfer protocal and file transfer protocol are just a few of these great protocols.
+
+15) All devices, websites, etc. have an IP address. It's just a matter of checking local storage, your network/ISP's local storage, one of the 13 root servers out there, and then the domain registry, until the correct IP address for an online location is found.
+
+16) I'm going to be very honest right now... I believe I answered this thoroughly between questions 14 and 15. But I am editing this doc in vim, and think that answering this question in this way, rather than by restructuring my answers, demonstrates my understanding of "everything is important, prioritize what's important." Please refer to my previous answers, thank you in advance!!
+
+17) Fault tolerant distributed systems!!! Or to be specific, data is broken up into packets of 64 bytes, sent to the destination separately, accounted for and resassembled by protocols such as TCP/IP. If a few packets are lost along the way, they're small enough that resending them through another pathway won't lose a noticable amount of time.
