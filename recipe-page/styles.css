@@ -1,3 +1,28 @@
-p {
-    color: blue;
+body {
+    background-color: #cce7eb;
+    color: #3e5c54;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+
+h1 {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+h2 {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+h4 {
+    font-weight: bolder;
+}
+
+ul {
+    font-weight: bolder;
+}
+
+p {}
+
+<!--#36a5ce;
+-->
