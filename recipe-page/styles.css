@@ -1,28 +1,57 @@
 body {
     background-color: #cce7eb;
     color: #3e5c54;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-family: "stylish", "Regular", sans-serif;
+}
+
+#giorno {
+    max-width: 800px;
+}
+
+.description {
+    font-size: 12pt;
+    max-width: 800px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+    max-width: 800px;
+    text-align: right;
+}
+
+.bottom {
+    float: bottom;
 }
 
 h1 {
-    font-size: xx-large;
-    font-weight: bolder;
+    font-size: 72pt;
+    text-align: center;
 }
 
 h2 {
-    font-size: x-large;
-    font-weight: bolder;
+    font-size: 56pt;
+    text-align: center;
 }
 
 h4 {
-    font-weight: bolder;
+    font-size: 24pt;
 }
 
 ul {
-    font-weight: bolder;
+    font-size: 16pt;
 }
 
-p {}
+ol {
+    font-size: 14pt;
+}
+
+p {
+    font-size: 14pt;
+}
 
 <!--#36a5ce;
 -->
