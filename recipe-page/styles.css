@@ -2,29 +2,55 @@ body {
     background-color: #cce7eb;
     color: #3e5c54;
     font-family: "stylish", "Regular", sans-serif;
+    padding: 3%;
+    display: inline-block;
+    display: flex;
 }
 
 #giorno {
-    max-width: 800px;
-}
-
-.description {
-    font-size: 12pt;
-    max-width: 800px;
+    max-width: 900px;
 }
 
 .left {
+    border: 5px double #3e5c54;
     float: left;
+    padding-top: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: -20px;
 }
 
 .right {
     float: right;
-    max-width: 800px;
+    font-size: 12pt;
     text-align: right;
 }
 
 .bottom {
-    float: bottom;
+    float: right;
+    max-width: 1000px;
+}
+
+.links {
+    float: left;
+}
+
+.videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+
+.videowrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 h1 {
@@ -52,6 +78,3 @@ ol {
 p {
     font-size: 14pt;
 }
-
-<!--#36a5ce;
--->
