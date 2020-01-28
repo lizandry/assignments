@@ -10,7 +10,9 @@
     color: #61dafb;
 }
 
-.dice {}
+.dice {
+    color: black
+}
 
 .die {
     background-color: #282c34;
