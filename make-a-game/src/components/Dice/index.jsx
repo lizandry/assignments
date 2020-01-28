@@ -1,3 +1,8 @@
+import React from 'react';
+
+import './index.css';
+import '../theFunStuff.jsx';
+
 const die0 = ["A", "A", "E", "E", "G", "N"];
 const die1 = ["A", "B", "B", "J", "O", "O"];
 const die2 = ["A", "C", "H", "O", "P", "S"];
@@ -16,8 +21,3 @@ const die14 = ["H", "I", "M", "N", "U", "Qu"];
 const die15 = ["H", "L", "N", "N", "R", "Z"];
 //remember to allow for two letters in "Qu"
 
-
-// EGINTV	EIOSST
-// EHINPS	ELRTTY
-// ELPSTU	HIMNUQu
-// GILRUW	HLNNRZ
