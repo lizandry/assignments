@@ -1,22 +1,5 @@
 //document.querySelector('.box');
 
-
-
-
-
-
-
-
-
-
-
-//object is unordered
-//array is ordered]
-
-//can loop through an array with i
-//can for-in object
-//dice[]
-
 const dice = [
         ['A', 'A', 'E,', 'E', 'G', 'N'],
         ['A', 'B', 'B', 'J', 'O', 'O'],
@@ -38,24 +21,23 @@ const dice = [
     ]
     // console.log(dice[0]); //-> [ 'A', 'A', 'E,', 'E', 'G', 'N' ]
     // console.log(dice[0][0]); //-> A
-
+    //returns a shuffled array
+    //dependency: shuffle()
 function boggleEmUp(diceArray) {
     let sides = 6;
-    diceArray = shuffle(diceArray);
     let randomLetter = [];
-    console.log(diceArray)
-        //console.log(shuffle(diceArray));
-        //let dieRandomizer = Math.floor(Math.random() * diceArray.length + 1)
-    for (i = 0; i < diceArray.length; i++) {
-        //what if i can grab a random number out of the array
-        let test = Math.floor(Math.random() * (sides + 1))
-            //console.log(test)
-            // console.log(diceArray[i]);
+    diceArray = shuffle(diceArray);
+    //shuffles the order of the input array
 
+    for (i = 0; i < diceArray.length; i++) {
+        //returns 0-5
+        let a = Math.floor(Math.random() * (sides))
+        randomLetter.push(diceArray[i][a]);
 
     }
+    return randomLetter;
 }
-console.log(boggleEmUp(dice));
+//console.log(boggleEmUp(dice)); //->
 
 
 
@@ -64,7 +46,8 @@ console.log(boggleEmUp(dice));
 // }
 
 //i genked Durstenfeld shuffle algorithm for this one. and... spent an hour fixing it?
-
+//shuffles an array
+//boggleEmUp() uses it
 function shuffle(array) {
     let randomArray = [];
     for (i = array.length - 1; i > -1; i--) {
@@ -72,10 +55,10 @@ function shuffle(array) {
         let temp = array[i];
         array[i] = array[j];
         array[j] = temp;
-        randomArray.push(array[i], i)
+        randomArray.push(array[i])
     }
 
     return randomArray;
 }
-//let testArray = ["a", "b", "c", "d", "e", "f", "g"]
-//console.log(shuffle(dice)); //
+//let testArray = ["a", "b", "c", "d", "e", "f"]
+//console.log(shuffle(testArray)); //->
