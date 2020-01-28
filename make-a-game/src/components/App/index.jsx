@@ -2,7 +2,8 @@ import React from 'react';
 
 
 import './index.css';
-
+import '.src/theFunStuff.jsx';
+import Dice from './src/components/Dice/index';
 
 export default class App extends React.Component {
     constructor() {
@@ -30,6 +31,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div class ="body">
+                <h1>let's play some boggle!!!</h1>
             <div class="button">
                     <div>
                         <ul>
