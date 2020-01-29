@@ -1,43 +1,37 @@
-//document.querySelector('.box');
-
 const dice = [
-        ['A', 'A', 'E,', 'E', 'G', 'N'],
-        ['A', 'B', 'B', 'J', 'O', 'O'],
-        ['A', 'C', 'H', 'O', 'P', 'S'],
-        ['A', 'F', 'F', 'K', 'P', 'S'],
-        ['A', 'O', 'O', 'T', 'T', 'W'],
-        ['C', 'I', 'M', 'O', 'T', 'U'],
-        ['D', 'E', 'I', 'L', 'R', 'X'],
-        ['D', 'E', 'L', 'R', 'V', 'Y'],
-        ['D', 'I', 'S', 'T', 'T', 'Y'],
-        ['E', 'E', 'G', 'H', 'N', 'W'],
-        ['E', 'E', 'I', 'N', 'S', 'U'],
-        ['E', 'H', 'R', 'T', 'V', 'W'],
-        ['E', 'I', 'O', 'S', 'S', 'T'],
-        ['E', 'L', 'R', 'T', 'T', 'Y'],
-        ['H', 'I', 'M', 'N', 'U', 'Qu'],
-        ['H', 'L', 'N', 'N', 'R', 'Z'],
-        //remember to allow for two letters in 'Qu'
-    ]
-    // console.log(dice[0]); //-> [ 'A', 'A', 'E,', 'E', 'G', 'N' ]
-    // console.log(dice[0][0]); //-> A
-    //returns a shuffled array
-    //dependency: shuffle()
+    ['A', 'A', 'E,', 'E', 'G', 'N'],
+    ['A', 'B', 'B', 'J', 'O', 'O'],
+    ['A', 'C', 'H', 'O', 'P', 'S'],
+    ['A', 'F', 'F', 'K', 'P', 'S'],
+    ['A', 'O', 'O', 'T', 'T', 'W'],
+    ['C', 'I', 'M', 'O', 'T', 'U'],
+    ['D', 'E', 'I', 'L', 'R', 'X'],
+    ['D', 'E', 'L', 'R', 'V', 'Y'],
+    ['D', 'I', 'S', 'T', 'T', 'Y'],
+    ['E', 'E', 'G', 'H', 'N', 'W'],
+    ['E', 'E', 'I', 'N', 'S', 'U'],
+    ['E', 'H', 'R', 'T', 'V', 'W'],
+    ['E', 'I', 'O', 'S', 'S', 'T'],
+    ['E', 'L', 'R', 'T', 'T', 'Y'],
+    ['H', 'I', 'M', 'N', 'U', 'Qu'],
+    ['H', 'L', 'N', 'N', 'R', 'Z'],
+    //remember to allow for two letters in 'Qu'
+]
+
+//adds one random element from each array into a new (also random) array
+//dependency: shuffle()
 function boggleEmUp(diceArray) {
     let sides = 6;
     let randomLetter = [];
+    //we want to make things as random as possible
     diceArray = shuffle(diceArray);
-    //shuffles the order of the input array
-
     for (i = 0; i < diceArray.length; i++) {
         //returns 0-5
-        let a = Math.floor(Math.random() * (sides))
+        let a = Math.floor(Math.random() * (sides));
         randomLetter.push(diceArray[i][a]);
-
     }
     return randomLetter;
 }
-//console.log(boggleEmUp(dice)); //->
 
 
 
@@ -46,7 +40,7 @@ function boggleEmUp(diceArray) {
 // }
 
 //i genked Durstenfeld shuffle algorithm for this one. and... spent an hour fixing it?
-//shuffles an array
+//shuffles the order of the input array
 //boggleEmUp() uses it
 function shuffle(array) {
     let randomArray = [];

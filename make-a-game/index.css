@@ -1,28 +1,32 @@
-.body {
+body {
     text-align: center;
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: #c5e8ec;
     font-size: calc(10px + 2vmin);
-    color: #61dafb;
+    color: #325f55;
 }
 
-.dice {
-    color: black
+#dice-box {
+    background-color: green;
+    display: inline-flex;
+    flex-direction: column;
+    flex-flow: row wrap;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 40vh;
+    width: 40vh;
+    text-align: center;
 }
 
 .die {
-    background-color: #282c34;
-    min-height: 5vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: #61dafb;
+    background-color: #ae5aae;
+    height: 8vh;
+    width: 8vh;
+    margin: 1vh;
+    flex: 1 1 auto;
+    font-size: 6vh;
+    color: #d6a14c;
+    text-align: center;
 }
 
 
