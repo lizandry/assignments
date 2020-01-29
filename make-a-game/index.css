@@ -1,8 +1,11 @@
 body {
     text-align: center;
     background-color: #c5e8ec;
-    font-size: calc(10px + 2vmin);
     color: #325f55;
+}
+
+h1 {
+    font-family: "Reenie Beanie", regular;
 }
 
 #dice-box {
@@ -19,13 +22,22 @@ body {
 }
 
 .die {
+    border: 3px;
+    border-color: #d6a14c;
     background-color: #ae5aae;
     height: 8vh;
     width: 8vh;
-    margin: 1vh;
     flex: 1 1 auto;
-    font-size: 6vh;
+    margin: 1vh;
+    font-size: 4vh;
+    font-family: "Special Elite", regular;
     color: #d6a14c;
+    line-height: 9vh;
+}
+
+#numberwang {
+    margin: auto;
+    /* Important */
     text-align: center;
 }
 
