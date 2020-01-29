@@ -1,6 +1,6 @@
 //these are the contents of the actual 16-die boggle game
 const dice = [
-    ['A', 'A', 'E,', 'E', 'G', 'N'],
+    ['A', 'A', 'E', 'E', 'G', 'N'],
     ['A', 'B', 'B', 'J', 'O', 'O'],
     ['A', 'C', 'H', 'O', 'P', 'S'],
     ['A', 'F', 'F', 'K', 'P', 'S'],
@@ -18,10 +18,14 @@ const dice = [
     ['H', 'L', 'N', 'N', 'R', 'Z'],
 ]
 
+let randomLetter = [];
+let boggleIt = document.getElementById('boggleIt');
+let dies = document.getElementsByClassName('die');
+let box = document.getElementById('dice-box');
+
+
 //adds one random element from each array into a new (also random) array
 //dependency: shuffle()
-let randomLetter = [];
-
 function boggleEmUp(diceArray) {
     let sides = 6;
 
@@ -32,24 +36,20 @@ function boggleEmUp(diceArray) {
         let a = Math.floor(Math.random() * (sides));
         randomLetter.push(diceArray[i][a]);
     }
-    console.log("hello")
+
+    //this prints the letters into the dice containers
+    if (randomLetter !== 0) {
+        for (i = 0; i < randomLetter.length; i++) {
+            dies[i].innerHTML = randomLetter[i];
+        }
+    }
+    //makes the boggle button disappear, to prevent errors from clicking it again
+    //clearing out the randomLetter array after calling it would
+    boggleIt.style.visibility = 'hidden'
     return randomLetter;
 }
-console.log(boggleEmUp(dice));
 
 
-function bobble() {
-    let boggleBoy = document.getElementById("boggleIt");
-    console.log(boggleBoy.innerhtml);
-}
-
-// if (document.getElementByID("boggleIt")) {
-//     let dies = $$('.die');
-//     console.log("test"); 
-//     for (i = 0; i < randomLetter.length; i++) {
-//         dies[i].innerHTML = randomLetter[i];
-//     }
-// }
 
 
 // const areTheyTouching = areTheyTouching() => {
