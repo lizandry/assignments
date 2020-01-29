@@ -20,9 +20,11 @@ const dice = [
 
 //adds one random element from each array into a new (also random) array
 //dependency: shuffle()
+let randomLetter = [];
+
 function boggleEmUp(diceArray) {
     let sides = 6;
-    let randomLetter = [];
+
     //we want to make things as random as possible
     diceArray = shuffle(diceArray);
     for (i = 0; i < diceArray.length; i++) {
@@ -30,12 +32,24 @@ function boggleEmUp(diceArray) {
         let a = Math.floor(Math.random() * (sides));
         randomLetter.push(diceArray[i][a]);
     }
+    console.log("hello")
     return randomLetter;
 }
-const boggleIt = $document.querySelector('.boggleIt');
-box.style.display = 'none';
+console.log(boggleEmUp(dice));
 
 
+function bobble() {
+    let boggleBoy = document.getElementById("boggleIt");
+    console.log(boggleBoy.innerhtml);
+}
+
+// if (document.getElementByID("boggleIt")) {
+//     let dies = $$('.die');
+//     console.log("test"); 
+//     for (i = 0; i < randomLetter.length; i++) {
+//         dies[i].innerHTML = randomLetter[i];
+//     }
+// }
 
 
 // const areTheyTouching = areTheyTouching() => {
