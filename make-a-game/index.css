@@ -9,36 +9,34 @@ h1 {
 }
 
 #dice-box {
-    background-color: green;
+    background-color: #2f6249;
+    border-color: #2f6249;
+    border: solid;
+    border-radius: 1vh;
+    padding: .5vh;
     display: inline-flex;
     flex-direction: column;
     flex-flow: row wrap;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    height: 40vh;
-    width: 40vh;
-    text-align: center;
+    height: 50vh;
+    width: 50vh;
 }
 
 .die {
-    border: 3px;
+    border: solid;
+    border-width: .5vh;
     border-color: #d6a14c;
+    border-radius: 1vh;
     background-color: #ae5aae;
-    height: 8vh;
-    width: 8vh;
-    flex: 1 1 auto;
-    margin: 1vh;
-    font-size: 4vh;
+    height: 23%;
+    width: 23%;
+    flex: 0 1 auto;
+    font-size: 7vh;
     font-family: "Special Elite", regular;
     color: #d6a14c;
-    line-height: 9vh;
-}
-
-#numberwang {
-    margin: auto;
-    /* Important */
-    text-align: center;
+    line-height: 11vh;
 }
 
 

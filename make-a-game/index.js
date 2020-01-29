@@ -32,6 +32,9 @@ function boggleEmUp(diceArray) {
     }
     return randomLetter;
 }
+const boggleIt = $document.querySelector('.boggleIt');
+box.style.display = 'none';
+
 
 
 
