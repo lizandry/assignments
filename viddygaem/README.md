@@ -26,7 +26,7 @@ git
 
 ## Authors
 
-* **liz andry** -
+* **liz andry**
 
 
 
