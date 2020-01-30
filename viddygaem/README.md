@@ -33,4 +33,4 @@ git
 ## Acknowledgments
 
 * big ups to Durstenfeld, whose shuffle algorithm i genked
-* as always, [Giorno Giovanna] (https://i.ytimg.com/vi/JpWJ5x8T9R4/maxresdefault.jpg) for providing a base palette for my webpages
+* as always, [Giorno Giovanna](https://i.ytimg.com/vi/JpWJ5x8T9R4/maxresdefault.jpg) for providing a base palette for my webpages
