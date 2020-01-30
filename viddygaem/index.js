@@ -1,4 +1,4 @@
-//these are the contents of the actual 16-die boggle game
+//these are the contents of the actual boggle game
 const dice = [
     ['A', 'A', 'E', 'E', 'G', 'N'],
     ['A', 'B', 'B', 'J', 'O', 'O'],
@@ -57,7 +57,7 @@ function boggleEmUp(diceArray) {
 // }
 
 //i genked Durstenfeld shuffle algorithm for this one. and... spent an hour fixing it?
-//shuffles the order of the input array
+//shuffles the order of the input array elements
 //boggleEmUp() uses it
 function shuffle(array) {
     let randomArray = [];
@@ -71,5 +71,3 @@ function shuffle(array) {
 
     return randomArray;
 }
-//let testArray = ["a", "b", "c", "d", "e", "f"]
-//console.log(shuffle(testArray)); //->
