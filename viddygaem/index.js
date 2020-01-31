@@ -1,5 +1,6 @@
+//these are the contents of the actual boggle game
 const dice = [
-    ['A', 'A', 'E,', 'E', 'G', 'N'],
+    ['A', 'A', 'E', 'E', 'G', 'N'],
     ['A', 'B', 'B', 'J', 'O', 'O'],
     ['A', 'C', 'H', 'O', 'P', 'S'],
     ['A', 'F', 'F', 'K', 'P', 'S'],
@@ -15,14 +16,19 @@ const dice = [
     ['E', 'L', 'R', 'T', 'T', 'Y'],
     ['H', 'I', 'M', 'N', 'U', 'Qu'],
     ['H', 'L', 'N', 'N', 'R', 'Z'],
-    //remember to allow for two letters in 'Qu'
 ]
+
+let randomLetter = [];
+let boggleIt = document.getElementById('boggleIt');
+let dies = document.getElementsByClassName('die');
+let box = document.getElementById('dice-box');
+
 
 //adds one random element from each array into a new (also random) array
 //dependency: shuffle()
 function boggleEmUp(diceArray) {
     let sides = 6;
-    let randomLetter = [];
+
     //we want to make things as random as possible
     diceArray = shuffle(diceArray);
     for (i = 0; i < diceArray.length; i++) {
@@ -30,8 +36,19 @@ function boggleEmUp(diceArray) {
         let a = Math.floor(Math.random() * (sides));
         randomLetter.push(diceArray[i][a]);
     }
+
+    //this prints the letters into the dice containers
+    if (randomLetter !== 0) {
+        for (i = 0; i < randomLetter.length; i++) {
+            dies[i].innerHTML = randomLetter[i];
+        }
+    }
+    //makes the boggle button disappear, to prevent errors from clicking it again
+    //clearing out the randomLetter array after calling it would
+    boggleIt.style.visibility = 'hidden'
     return randomLetter;
 }
+
 
 
 
@@ -40,7 +57,7 @@ function boggleEmUp(diceArray) {
 // }
 
 //i genked Durstenfeld shuffle algorithm for this one. and... spent an hour fixing it?
-//shuffles the order of the input array
+//shuffles the order of the input array elements
 //boggleEmUp() uses it
 function shuffle(array) {
     let randomArray = [];
@@ -54,5 +71,3 @@ function shuffle(array) {
 
     return randomArray;
 }
-//let testArray = ["a", "b", "c", "d", "e", "f"]
-//console.log(shuffle(testArray)); //->
