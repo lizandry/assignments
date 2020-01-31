@@ -4,8 +4,23 @@ class Event {
         this.description = description;
         this.availableTickets = []
     }
-    addAvailableTickets(seating, price) {
-        this.availableTickets.push(seating, price);
+    addAvailableTickets(TicketType) {
+        this.availableTickets.push(TicketType);
+    }
+    allTickets() {
+        let ticketStr = 'all tickets: ';
+        for (let i in this.availableTickets) {
+            ticketStr = ticketStr.concat((i + 1) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
+        }
+        return ticketStr;
+    }
+    searchTickets(upper, lower) {
+        let eligible = 'eligible tickets: '
+        for (let i in this.availableTickets) {
+            console.log(this.availableTickets[i].seating)
+
+            ticketStr = ticketStr.concat((i + 1) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
+        }
     }
 }
 
@@ -15,6 +30,7 @@ class TicketType {
         this.price = price;
     }
 }
+
 
 const eventObj1 = new Event('Tribute To the Monkees', 'a conversation with Michael Nesmith & Mickey Dolenz');
 const eventObj2 = new Event('Fake Ted Talks', 'with Paul & Storm, Jonathan Coulton, Rhea Butcher, Matt Gourley, Myq Kaplan, Molly Lewis, Adam Savage & MORE');
@@ -28,11 +44,38 @@ const eventArray = new Array();
 eventArray.push(eventObj1);
 eventArray.push(eventObj2, eventObj3, eventObj4, eventObj5, eventObj6);
 
-$(document).ready(function() {
-    let html = '';
-    $.each(eventArray, function(index, item) {
-        html += `<li>${item.name} - ${item.description}</li>`;
-    });
-    // insert final html into #event...
-    $('#event').html(html);
-});
+
+const tick1a = new TicketType('balcony', 40)
+const tick1b = new TicketType('orchestra', 120)
+const tick2 = new TicketType('table seating', 35)
+const tick3 = new TicketType('general', 25)
+const tick4 = new TicketType('general', 20)
+const tick5 = new TicketType('table seating', 35)
+const tick6 = new TicketType('ticket', 12)
+
+
+eventObj1.addAvailableTickets(tick1a);
+eventObj1.addAvailableTickets(tick1b);
+eventObj2.addAvailableTickets(tick2)
+eventObj3.addAvailableTickets(tick3)
+eventObj4.addAvailableTickets(tick4)
+eventObj5.addAvailableTickets(tick5)
+eventObj6.addAvailableTickets(tick6)
+
+
+
+console.log(eventObj1.allTickets())
+
+
+
+// console.log(eventObj2.availableTickets);
+// console.log(eventObj1.availableTickets);
+// console.log(eventObj1.availableTickets[0])
+// $(document).ready(function() {
+//     let html = '';
+//     $.each(eventArray, function(index, item) {
+//         html += `<li>${item.name} - ${item.description}</li>`;
+//     });
+//     // insert final html into #event...
+//     $('#event').html(html);
+// });
