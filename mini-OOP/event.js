@@ -1,36 +1,3 @@
-//actually, my understanding of jQuery was just off. straightening out now
-
-
-// searchTickets(lower, upper) {
-// let eligible = 'eligible tickets: ';
-// let count = 1;
-
-// if (!lower && !upper) {
-//     for (let i in this.availableTickets) {
-//         eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
-//         count++;
-//     }
-
-// } else if (!upper) {
-//     for (let i in this.availableTickets) {
-//         if (this.availableTickets[i].price < lower) {
-//             eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
-//             count++;
-//         }
-//     }
-// } else
-//     for (let i in this.availableTickets) {
-//         if (this.availableTickets[i].price > lower && this.availableTickets[i].price < upper) {
-//             eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
-//             count++;
-//         }
-//     }
-// if (eligible === 'eligible tickets: ') {
-//     eligible = 'No Tickets Available';
-// }
-// return eligible;
-// }
-
 class Event {
     constructor(name, description) {
             this.name = name;
@@ -59,6 +26,47 @@ class Event {
         return ticketStr;
     }
 
+    searchTickets(lower, upper) {
+        let eligible = 'eligible tickets: ';
+        let count = 1;
+        //if no specifications, all tickets are returned
+        if (!lower && !upper) {
+            for (let i in this.availableTickets) {
+                eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
+                count++;
+            }
+            //this probably isn't a very clean solution, but if only one number is set, it'll treat it as the upper limit
+        } else if (!upper) {
+            for (let i in this.availableTickets) {
+                if (this.availableTickets[i].price <= lower) {
+                    eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
+                    count++;
+                }
+            }
+        } else
+            for (let i in this.availableTickets) {
+                if (this.availableTickets[i].price >= lower && this.availableTickets[i].price <= upper) {
+                    eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
+                    count++;
+                }
+            }
+        if (eligible === 'eligible tickets: ') {
+            eligible = 'No Tickets Available';
+        }
+        return eligible;
+    }
+    cheapSeats() {
+        let cheap = Infinity;
+        let seat = '';
+        for (let i in this.availableTickets) {
+            if (cheap > this.availableTickets[i].price) {
+                cheap = this.availableTickets[i].price
+                seat = this.availableTickets[i].seating
+
+            }
+        }
+        return `the cheapest seats are: ${seat} (${cheap})`;
+    }
 
 }
 
@@ -91,23 +99,17 @@ eventObj3.addAvailableTickets('VIP', 50);
 // console.log(eventObj1.searchTickets(35));
 // console.log(eventObj1.searchTickets(50, 120));
 // console.log(eventObj1.searchTickets(-15, 50));
-//console.log(eventObj1.searchTickets(25, 100));
-//console.log(eventObj1.searchTickets(0, 39))
-//console.log(eventObj1.searchTickets(230, 300))
+// console.log(eventObj1.searchTickets(25, 100));
+// console.log(eventObj1.searchTickets(0, 39))
+// console.log(eventObj1.searchTickets(230, 300))
+//console.log(eventObj1.cheapSeats())
 
-// $(document).ready(function() {
-//     let html = '';
-//     $.each(eventArray, function(index, item) {
-//         html += `<li>${item.name} - ${item.description}</li>`;
-//     });
-//     // insert final html into #event...
-//     $('#event').html(html);
-// });
+
 $(document).ready(function() {
     let html = '';
     $.each(eventArray, function(index, item) {
 
-        html += `<li>${item.name} - ${item.description} - ${item.allTickets()}</li>`;
+        html += `<li>${item.name} - ${item.description}<br>${item.searchTickets(-15, 40)}<br>${item.cheapSeats()}</li><br>`;
     });
     // insert final html into #event...
     $('#event').html(html);
