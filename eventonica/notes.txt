@@ -24,6 +24,11 @@ What other properties would be helpful to include as well?
 
 What methods should each class have?
 
-class EventRecommender
--
+class Event
+properties: title, main performer, second performers date, category, venue, description
+
+
+class User
+properties: chosenName, firstName, lastName 
+(legal name only for security/confirmation reasons ie billing, 21+ shows)
 

@@ -35,3 +35,5 @@ class EventRecommender {
         // Returns all events in a given category
     }
 }
+
+module.exports = { EventRecommender, User, Event }
