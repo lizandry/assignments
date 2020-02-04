@@ -1,26 +1,19 @@
 class Event {
     constructor(name, description) {
-            this.name = name;
-            this.description = description;
-            this.availableTickets = [];
-        }
-        // addAvailableTickets() {
-        //     this.availableTickets.push();
-        // }
+        this.name = name;
+        this.description = description;
+        this.availableTickets = [];
+    }
 
     addAvailableTickets(seating, price) {
         let x = new TicketType(seating, price);
         this.availableTickets.push(x);
-
-        // for (var i = 0; i < arguments.length; i++) {
-        //     this.availableTickets.push(arguments[i]);
-        // }
     }
     allTickets() {
         let ticketStr = 'all tickets: ';
         let count = 1;
-        for (let i in this.availableTickets) {
-            ticketStr = ticketStr.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
+        for (let ticket of this.availableTickets) {
+            ticketStr = ticketStr.concat((count) + '. ' + ticket.seating + ' (' + ticket.price + ') ');
             count++;
         }
         return ticketStr;
@@ -28,31 +21,23 @@ class Event {
 
     searchTickets(lower, upper) {
         let eligible = 'eligible tickets: ';
-        let count = 1;
+        // let count = 1;
         //if no specifications, all tickets are returned
-        if (!lower && !upper) {
-            for (let i in this.availableTickets) {
-                eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
-                count++;
-            }
-            //this probably isn't a very clean solution, but if only one number is set, it'll treat it as the upper limit
-        } else if (!upper) {
-            for (let i in this.availableTickets) {
-                if (this.availableTickets[i].price <= lower) {
-                    eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
-                    count++;
-                }
-            }
-        } else
-            for (let i in this.availableTickets) {
-                if (this.availableTickets[i].price >= lower && this.availableTickets[i].price <= upper) {
-                    eligible = eligible.concat((count) + '. ' + this.availableTickets[i].seating + ' (' + this.availableTickets[i].price + ') ');
-                    count++;
-                }
-            }
-        if (eligible === 'eligible tickets: ') {
+
+        let eligibleTickets = this.availableTickets.filter(ticket => ticket.inRange(lower, upper))
+        if (eligibleTickets.length === 0) {
             eligible = 'No Tickets Available';
         }
+        //ticketNumber used to be count
+        return eligibleTickets.map((ticket, ticketNumber) => ticket.print(ticketNumber)).reduce((prev, current) => prev.concat(current));
+        // for (let ticket of this.availableTickets) {
+        //     if (ticket.inRange(lower, upper)) {
+        //         eligible = eligible.concat(ticket.print(count));
+        //         count++;
+        //     }
+        // }
+
+
         return eligible;
     }
     cheapSeats() {
@@ -74,6 +59,39 @@ class TicketType {
     constructor(seating, price) {
         this.seating = seating;
         this.price = price;
+    }
+
+    print(count) {
+        return (count) + '. ' + this.seating + ' (' + this.price + ') ';
+    }
+
+    inRange(lower, upper) {
+        if (!lower && !upper) {
+            return true;
+        }
+
+        // TODO
+        // if (!lower && !upper) {
+
+        //     //this probably isn't a very clean solution, but if only one number is set, it'll treat it as the upper limit
+        // } else if (!upper) {
+        //     for (let i in this.availableTickets) {
+        //         if (this.availableTickets[i].price <= lower) {
+        //             eligible = eligible.concat(this.availableTickets[i].print(count));
+        //             count++;
+        //         }
+        //     }
+        // } else
+        //     for (let ticket of this.availableTickets) {
+        //         if (ticket.price >= lower && ticket.price <= upper
+        //             //cut out earlier conditions, make this apply to all conditions
+        //             ) {
+
+        //             eligible = eligible.concat(ticket.print(count));
+        //             count++;
+        //         }
+        //     }
+        return false;
     }
 }
 let eventArray = new Array();
