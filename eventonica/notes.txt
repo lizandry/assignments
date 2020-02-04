@@ -1,0 +1,29 @@
+You need to build a program that lets users browse a list of events and save the ones they are interested in. 
+For today's piece of the project, you'll write object-oriented JS code to manage users and events. 
+In a later lesson, you'll add a UI for your users to use.
+
+When you instantiate an EventRecommender object, you should be able to do the following:
+
+Users:
+-Add a new User to the System
+-Allow users to save events to a personal Events array
+-Delete a User from the System
+Event:
+-Add a new Event to the System
+-Delete an Event from the System
+Search:
+-Search for events by date
+-Search for events by category
+
+Before you start coding, think about and write down the answers to these questions:
+
+What classes will you create?
+
+What properties should each class have? Think about: What properties are needed to complete the assignment? 
+What other properties would be helpful to include as well?
+
+What methods should each class have?
+
+class EventRecommender
+-
+
