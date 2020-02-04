@@ -25,10 +25,28 @@ What other properties would be helpful to include as well?
 What methods should each class have?
 
 class Event
-properties: title, main performer, second performers date, category, venue, description
+properties: title, main performer, date, category, venue, 
+description, doorTime, showTime,
+methods: addEvent, 
 
+Event subclasses
+concerts: primary performers, secondary performers
+sports: opponants
+festivals: open AND close, date range, 
+arts & theatre: 
+family: 
+
+class or event subclass venue
+ seating, accessibility, parking, zip code,
+ methods: 
 
 class User
-properties: chosenName, firstName, lastName 
-(legal name only for security/confirmation reasons ie billing, 21+ shows)
+properties: chosenName, firstName, address, lastName, zipcode, disabilities,
+conditions(ie has kids, weekends and weeknights only, etc)
+(legal name and address only for security/confirmation reasons ie billing, 21+ shows)
+methods: changeName, addAddress, addZipCode, (general privacy stuff),
+addVenuePreferences(disabilities and conditions, categories enjoyed)
 
+class EventRecommender
+properties: dates, attendees, 
+methods: compareLocations, checkVenuePreferences, dateSelector, attendeeSelector
