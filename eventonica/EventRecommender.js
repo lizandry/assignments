@@ -20,13 +20,15 @@ class EventRecommender {
     deleteUser(badUser) {
         //click conditional
         //"are you sure?" prompt
-        this.events.splice(badUser, 1);
+        this.users.splice(badUser, 1);
+
     }
 
     deleteEvent(badEvent) {
         //click conditional
         //"warning" prompt
         this.events.splice(badEvent, 1);
+        return this.events;
     }
 
     findEventsByDate(userDate) {
@@ -35,7 +37,7 @@ class EventRecommender {
         }
         //findEventsByDistance{}
     findEventsbyCategory(category) {
-        // Returns all events in a given category
+        // Returns all events in a given categorynewE
         //  eventsByCat = []
         // this might not be accurate, go back and check later
         return this.events.filter(event => event.category === category);
@@ -52,7 +54,8 @@ class EventRecommender {
 
 
 class Event {
-    constructor(title, date, category, location, venue, description, showtime) {
+    constructor(id, title, date, category, location, venue, description, showtime) {
+        this.id = id;
         this.title = title;
         this.date = new Date(date);
         this.category = category;
