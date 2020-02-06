@@ -58,4 +58,28 @@ describe("EventRecommender", () => {
             expect(er.events.length).toEqual(0);
         });
     });
+
+    //my date function deffo doesn't work
+    // describe('findEventsByDate', () => {
+    //     it("removes the event from the system", () => {
+    //         // let evDel = new Event(999, 'the party', '2020-06-18', 'pop', 'los angeles, CA', 'henry fonda theatre', 'a real fuckin party', '20:00');
+    //         er.findEventsbyCategory(ev);
+    //         expect(er.events.length).toEqual(1);
+    //         expect(er.events.length).toEqual(0);
+    //     });
+    // });
+
+    describe('findEventsByCategory', () => {
+        it("produces an array of events, filtered by category", () => {
+            // let evDel = new Event(999, 'the party', '2020-06-18', 'pop', 'los angeles, CA', 'henry fonda theatre', 'a real fuckin party', '20:00');
+            expect(er.events.length).toEqual(0);
+            er.addEvent(ev);
+            expect(er.events.length).toEqual(1);
+            er.findEventsbyCategory('pop');
+
+            er.findEventsbyCategory('bluegrass');
+            expect(er.events.length).toEqual(0);
+
+        });
+    });
 });
