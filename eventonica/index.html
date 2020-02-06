@@ -30,13 +30,13 @@
             <h3>Add User</h3>
             <form id="add-user">
                 <label>User ID:</label>
-                <input type="text" id="add-user-id">
+                <input type="text" class="text-field" id="add-user-id">
                 <br/>
                 <label>User name:</label>
-                <input type="text" id="add-user-name">
+                <input type="text" class="text-field" id="add-user-name">
                 <br/>
                 <!-- Add more form fields here -->
-                <input type="submit">
+                <input type="submit" class="form-buttons" value="add user">
             </form>
         </div>
 
@@ -44,9 +44,9 @@
             <h3>Delete User</h3>
             <form id="delete-user">
                 <label>User ID:</label>
-                <input type="text" id="delete-user-id">
+                <input type="text" class="dropdown" id="delete-user-id">
                 <br/>
-                <input type="submit">
+                <input type="submit" class="form-buttons delete-buttons" value="are you sure?">
             </form>
         </div>
 
@@ -62,13 +62,13 @@
             <h3>Add Event</h3>
             <form id="add-event">
                 <label>Event ID:</label>
-                <input type="text" id="add-event-id">
+                <input type="text" class="text-field" id="add-event-id">
                 <br/>
                 <label>Event name:</label>
-                <input type="text" id="add-event-name">
+                <input type="text" class="text-field" id="add-event-name">
                 <br/>
                 <!-- Add more form fields here -->
-                <input type="submit">
+                <input type="submit" class="form-buttons" value="add event">
             </form>
         </div>
 
@@ -76,9 +76,9 @@
             <h3>Delete Event</h3>
             <form id="delete-event">
                 <label>Event ID:</label>
-                <input type="text" id="delete-event-id">
+                <input type="text" class="drop-down" id="delete-event-id">
                 <br/>
-                <input type="submit">
+                <input type="submit" class="form-buttons delete-buttons" value="are you sure?">
             </form>
         </div>
 
@@ -91,9 +91,9 @@
             <h3>Find Events by Date</h3>
             <form id="date-search">
                 <label>Event date:</label>
-                <input type="text" id="date-search-id">
+                <input type="date" id="date-search-id">
                 <br/>
-                <input type="submit">
+                <input type="submit" class="form-buttons find-buttons" value="find events">
             </form>
             <h4>Results:</h4>
             <ol>
@@ -105,9 +105,9 @@
             <h3>Find Events by Category</h3>
             <form id="category-search">
                 <label>Event category:</label>
-                <input type="text" id="category-search-id">
+                <input type="text" class="text-field" id="category-search-id">
                 <br/>
-                <input type="submit">
+                <input type="submit" class="form-buttons find-buttons" value="find events">
             </form>
             <h4>Results:</h4>
             <ol>
@@ -119,10 +119,10 @@
             <h3>Save Event for User</h3>
             <form id="save-user-event">
                 <label>User ID:</label>
-                <input type="text" id="save-user-id">
+                <input type="text" class="like-button" id="save-user-id">
                 <br/>
                 <label>Event ID:</label>
-                <input type="text" id="save-event-id">
+                <input type="text" class="like-button" id="save-event-id">
                 <br/>
                 <input type="submit">
             </form>

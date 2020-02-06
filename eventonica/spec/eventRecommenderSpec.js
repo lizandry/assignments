@@ -42,10 +42,14 @@ describe("EventRecommender", () => {
     describe("deleteUser", () => {
         it("removes a User from the system", () => {
             let usDel = new User(666, 'doomed', 91773);
+            let me = new User(123456, 'liz', 94608);
             er.addUser(usDel);
-            expect(er.users.length).toEqual(1);
+            er.addUser(me);
+            expect(er.users.length).toEqual(2);
             er.deleteUser(usDel);
-            expect(er.users.length).toEqual(0);
+            expect(er.users.length).toEqual(1);
+            //this function might be wildly out of pocket
+            //removes just the first object?
         });
     });
 
