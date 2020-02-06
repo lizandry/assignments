@@ -1,3 +1,23 @@
-form {
-    color: lightcoral
+body {
+    background-color: #a7dcc0;
+    font-family: Aldrich, regular;
+    background: repeating-linear-gradient()
 }
+
+form {
+    width: 40vh;
+    border: .5vh solid;
+    border-top-color: #e6a63c;
+    border-right-color: #5e2e6c;
+    border-bottom-color: #5e2e6c;
+    border-left-color: #e6a63c;
+    border-radius: 5%;
+    padding: 1vh;
+    margin: 1vh;
+    background-image: linear-gradient(45deg, #5e2e6c 25%, transparent 25%, transparent 75%, #5e2e6c 75%, #5e2e6c), linear-gradient(-45deg, #5e2e6c 25%, #e6a63c 25%, #e6a63c 75%, #5e2e6c 75%, #5e2e6c);
+    background-size: 10vh;
+    background-repeat: repeat-x;
+}
+
+
+/*background: linear-gradient( 135deg, #e6a63c 25%, #5e2e6c 25%);*/
