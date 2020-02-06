@@ -45,7 +45,6 @@ describe("EventRecommender", () => {
             er.addUser(usDel);
             expect(er.users.length).toEqual(1);
             er.deleteUser(usDel);
-            //"expected 1 to equal 0" again, probably a problem with my code
             expect(er.users.length).toEqual(0);
         });
     });
@@ -56,7 +55,6 @@ describe("EventRecommender", () => {
             er.addEvent(evDel);
             expect(er.events.length).toEqual(1);
             er.deleteEvent(evDel);
-            //they don't both fail at the same time!!
             expect(er.events.length).toEqual(0);
         });
     });
