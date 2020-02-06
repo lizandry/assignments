@@ -76,7 +76,7 @@ describe("EventRecommender", () => {
             er.addEvent(ev);
             expect(er.events.length).toEqual(1);
             er.findEventsbyCategory('pop');
-
+            //test return value of a function
             er.findEventsbyCategory('bluegrass');
             expect(er.events.length).toEqual(0);
 
