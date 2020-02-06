@@ -37,7 +37,7 @@ class EventRecommender {
         }
         //findEventsByDistance{}
     findEventsbyCategory(category) {
-        // Returns all events in a given categorynewE
+        // Returns all events in a given category
         //  eventsByCat = []
         // this might not be accurate, go back and check later
         return this.events.filter(event => event.category === category);
@@ -92,7 +92,7 @@ class User {
         //      this.availableTickets.push(x);
         //  }
     changeName(newName) {
-        this.choseName = newName;
+        this.chosenName = newName;
     }
     changeZip(newZip) {
         this.zipcode = newZip;
