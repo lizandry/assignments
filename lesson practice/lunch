@@ -1,0 +1,7 @@
+#!/bin/bash
+
+lunch=$1
+echo $lunch is for lunch
+
+echo We also offer:
+cat foods.txt
