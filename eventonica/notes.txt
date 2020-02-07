@@ -4,6 +4,8 @@ What other properties would be helpful to include as well?
 What methods should each class have
 
 
+
+
 Search/Recommender:
 methods: searchByDate, searchByCat
 
@@ -30,18 +32,11 @@ festivals: open AND close, date range,
 arts & theatre: 
 family: 
 
-?
-
-
-
-
 
 class or event subclass venue
  seating, accessibility, parking, zip code, 
  methods: 
 
-class User
-p
 
 class EventRecommender
 properties: dates, attendees, 

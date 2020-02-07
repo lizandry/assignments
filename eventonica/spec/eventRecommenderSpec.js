@@ -42,10 +42,14 @@ describe("EventRecommender", () => {
     describe("deleteUser", () => {
         it("removes a User from the system", () => {
             let usDel = new User(666, 'doomed', 91773);
+            let me = new User(123456, 'liz', 94608);
             er.addUser(usDel);
-            expect(er.users.length).toEqual(1);
+            er.addUser(me);
+            expect(er.users.length).toEqual(2);
             er.deleteUser(usDel);
-            expect(er.users.length).toEqual(0);
+            expect(er.users.length).toEqual(1);
+            //this function might be wildly out of pocket
+            //removes just the first object?
         });
     });
 
@@ -71,14 +75,23 @@ describe("EventRecommender", () => {
 
     describe('findEventsByCategory', () => {
         it("produces an array of events, filtered by category", () => {
-            // let evDel = new Event(999, 'the party', '2020-06-18', 'pop', 'los angeles, CA', 'henry fonda theatre', 'a real fuckin party', '20:00');
             expect(er.events.length).toEqual(0);
             er.addEvent(ev);
             expect(er.events.length).toEqual(1);
-            er.findEventsbyCategory('pop');
+            expect(er.findEventsbyCategory('pop')).toEqual([ev]);
+            expect(er.findEventsbyCategory('bluegrass')).toEqual([]);
+            // expect(er.events.length).toEqual(0);
 
-            er.findEventsbyCategory('bluegrass');
-            expect(er.events.length).toEqual(0);
+        });
+    });
+    describe('changeName', () => {
+        it("allows the user to change their name", () => {
+            let usDel = new User(666, 'doomed', 91773);
+            expect(usDel.chosenName).toEqual('doomed');
+            usDel.changeName('saved');
+            expect(usDel.chosenName).toEqual('saved');
+            // expect(er.findEventsbyCategory('bluegrass')).toEqual([]);
+            // expect(er.events.length).toEqual(0);
 
         });
     });
