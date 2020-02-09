@@ -31,3 +31,11 @@ function arrayMatizeMe(originalString, separatingCharacter) {
     return originalString.split(separatingCharacter);
 }
 console.log(arrayMatizeMe('Leah, Russell, Michelle', ','));
+
+function techtonicaStaffGetOut() {
+
+}
+//^[^BMT]\w+
+//works for everyone except for Tahshara
+//find out syntax for making exceptions
+//Bill Michelle Talea Tiffany    Amy Ariel Cadence Gabby Gloria Lisa Liz Nasreen Quincy Robyn Tahshara Zarina Zhag

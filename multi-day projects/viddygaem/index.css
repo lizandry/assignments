@@ -34,10 +34,55 @@ h1 {
     height: 23%;
     width: 23%;
     flex: 0 1 auto;
-    font-size: 9vh;
+    font-size: 8vh;
     font-family: "Special Elite", regular;
     color: #d6a14c;
     line-height: 13vh;
+}
+
+.die:focus {
+    background-color: #510051;
+}
+
+#letterField {
+    height: 10vh;
+    border: solid;
+    border-width: 1vh;
+    border-color: #325f55;
+    border-radius: 1vh;
+    background-color: #ae5aae;
+    font-size: 9vh;
+    line-height: 13vh;
+    font-family: "Special Elite", regular;
+    color: #d6a14c;
+    box-shadow: inset 0 0 0 .5vh #d6a14c;
+}
+
+#scoreField {
+    font-family: "Doppio One", regular;
+    font-size: 4vh;
+    width: 5%;
+    border: solid;
+    border-width: .5vh;
+    border-color: #325f55;
+    border-radius: .5vh;
+    background-color: #ae5aae;
+    color: #d6a14c;
+    box-shadow: inset 0 0 0 .25vh #d6a14c;
+}
+
+#checkedWords {
+    text-align: left;
+    font-family: "Doppio One", regular;
+    font-size: 4vh;
+    width: 80%;
+    border: solid;
+    border-width: .5vh;
+    border-color: #325f55;
+    border-radius: .5vh;
+    background-color: #ae5aae;
+    color: #d6a14c;
+    box-shadow: inset 0 0 0 .25vh #d6a14c;
 }
 
 #boggleIt {
@@ -47,7 +92,22 @@ h1 {
     border-width: .3vh;
     border-radius: 1vh;
     padding: .5vh;
-    height: 6vh;
+    height: 5vh;
+    width: 40vh;
+    font-size: 3vh;
+    color: #325f55;
+    font-family: "Doppio One", regular;
+    line-height: 3vh;
+}
+
+#checkDictionary {
+    background-color: #c5e8ec;
+    border: solid;
+    border-color: #325f55;
+    border-width: .3vh;
+    border-radius: 1vh;
+    padding: .5vh;
+    height: 5vh;
     width: 40vh;
     font-size: 3vh;
     color: #325f55;
