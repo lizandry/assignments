@@ -18,10 +18,15 @@ const dice = [
     ['H', 'L', 'N', 'N', 'R', 'Z'],
 ]
 
-let randomLetter = [];
+let randomLetters = [];
+let score = 0
+let scoreField = document.getElementById('scoreField');
 let boggleIt = document.getElementById('boggleIt');
 let dies = document.getElementsByClassName('die');
 let box = document.getElementById('dice-box');
+let letterField = document.getElementById('letterField');
+let checkedWords = document.getElementById('checkedWords');
+
 
 
 //adds one random element from each array into a new (also random) array
@@ -31,30 +36,60 @@ function boggleEmUp(diceArray) {
 
     //we want to make things as random as possible
     diceArray = shuffle(diceArray);
-    for (i = 0; i < diceArray.length; i++) {
-        //returns 0-5
+    //randomly selects an element from each array, mimicking the roll of a 6-sided die
+    for (let eachDie of diceArray) {
         let a = Math.floor(Math.random() * (sides));
-        randomLetter.push(diceArray[i][a]);
+        randomLetters.push(eachDie[a]);
     }
 
     //this prints the letters into the dice containers
-    if (randomLetter !== 0) {
-        for (i = 0; i < randomLetter.length; i++) {
-            dies[i].innerHTML = randomLetter[i];
+    if (randomLetters !== 0) {
+        for (i = 0; i < randomLetters.length; i++) {
+            dies[i].innerHTML = randomLetters[i];
         }
     }
     //makes the boggle button disappear, to prevent errors from clicking it again
-    //clearing out the randomLetter array after calling it would
+    //clearing out the randomLetters array after calling it would be a lot of work
     boggleIt.style.visibility = 'hidden'
-    return randomLetter;
+    return randomLetters;
+}
+
+//adds the letter on the clicked die to word field
+//i'm trying to get functionality so the buttons stay clicked
+function clicked(i) {
+    //die[i].disabled = true;
+    letterField.innerHTML += randomLetters[i];
+    die[i].disabled = true;
+}
+
+//there isn't a dictionary check
+//but you'll never know, if you're playing by the rules
+//this changes the score
+function dictionaryCheck() {
+    if (letterField.innerHTML.length < 3) {
+        letterField.innerHTML = '';
+        alert('a word must be 3 letters or more');
+
+    } else
+        checkedWords.innerHTML += `${letterField.innerHTML}, `;
+    score += letterField.innerHTML.length;
+    letterField.innerHTML = '';
+    scoreField.innerHTML = score;
+
+}
+//letter selection & storage & color change
+//check if they're touching
+//dictionary stretch goal
+//
+//
+//
+//this one seems like so much work
+function areTheyTouching() {
+
+    //this one's going to figure out how far the tiles are from each other, to see if the rules check out
 }
 
 
-
-
-// const areTheyTouching = areTheyTouching() => {
-//     //this one's going to figure out how far the tiles are from each other, to see if the rules check out
-// }
 
 //i genked Durstenfeld shuffle algorithm for this one. and... spent an hour fixing it?
 //shuffles the order of the input array elements

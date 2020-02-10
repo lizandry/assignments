@@ -1,0 +1,83 @@
+body {
+    background-color: #a7dcc0;
+    font-family: Aldrich, regular;
+    color: #091c00;
+    /*font-size: 10vh;*/
+}
+
+form {
+    width: 70vh;
+    font-size: 3vh;
+    line-height: 6vh;
+    text-align: center;
+    /*background: linear-gradient(120deg, transparent 75%, #e6a63c 75%) 0 0, linear-gradient(240deg, transparent 75%, #e6a63c 75%) 0 0, linear-gradient(120deg, transparent 75%, #e6a63c 75%) 30px -50px, linear-gradient(240deg, transparent 75%, #e6a63c 75%) 30px 50px, linear-gradient(#ae5aae 50%, #ae5aae 50%);
+    background-size: 60px 100px;*/
+    /* wanna go back and get the 60px 100px stuff to be responsive */
+    background: linear-gradient(120deg, transparent 75%, #e6a63c 75%) 0 0, linear-gradient(240deg, transparent 75%, #e6a63c 75%) 0 0, linear-gradient(120deg, transparent 75%, #e6a63c 75%) 30px -50px, linear-gradient(240deg, transparent 75%, #e6a63c 75%) 30px 50px, linear-gradient(#88009c 50%, #8a109c 50%);
+    background-size: 60px 100px;
+    padding: 1vh;
+    margin: 1vh;
+    border-radius: 1vh;
+}
+
+
+/* .input-area {
+    background-color: #f4f1f1;
+    opacity: .80;
+} */
+
+.text-field {
+    border-radius: 1vh;
+    font-size: 3vh;
+}
+
+.form-buttons {
+    border-radius: 1vh;
+    font-family: Aldrich, regular;
+    font-size: 2vh;
+    color: #f4f1f1;
+    background-color: #88231a;
+    padding: .5vh;
+}
+
+
+/*body {
+    display: flex;
+    background: #ddd;
+    
+    flex-wrap: wrap;
+  }
+  
+  .pattern {
+      width: 240px;
+      height: 240px;
+    margin: 20px;
+    flex: 0 0 auto;
+  }
+  
+  
+  
+  
+  .zig {
+    background:
+      linear-gradient(135deg,
+        #5e2e6c 25%,
+        rgba(0,0,0,0) 25.1%),
+      linear-gradient(225deg,
+        #5e2e6c 25%,
+        rgba(0,0,0,0) 25.1%),
+      linear-gradient(315deg,
+        #5e2e6c 25%,
+        rgba(0,0,0,0) 25.1%),
+      linear-gradient(45deg,
+        #5e2e6c 25%,
+        #e6a63c 25.1%),
+      #ffffff;
+    background-size: 40px 40px;
+    background-position: -20px 0, -20px 0, 0 0, 0 0;
+  }
+  
+  .diamond {
+    background-size: 20px 20px;
+    background-position: -20px 0, -20px 0, 0 0, 0 0;
+  }*/
