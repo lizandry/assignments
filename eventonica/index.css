@@ -5,11 +5,22 @@ body {
     /*font-size: 10vh;*/
 }
 
+#error-div {
+    align-self: center;
+    align-content: center;
+}
+
+#error-image {
+    margin-left: 30%;
+    padding-top: 20vh;
+    width: 40%;
+}
+
 form {
     width: 70vh;
     font-size: 3vh;
     line-height: 6vh;
-    text-align: center;
+    text-align: left;
     /*background: linear-gradient(120deg, transparent 75%, #e6a63c 75%) 0 0, linear-gradient(240deg, transparent 75%, #e6a63c 75%) 0 0, linear-gradient(120deg, transparent 75%, #e6a63c 75%) 30px -50px, linear-gradient(240deg, transparent 75%, #e6a63c 75%) 30px 50px, linear-gradient(#ae5aae 50%, #ae5aae 50%);
     background-size: 60px 100px;*/
     /* wanna go back and get the 60px 100px stuff to be responsive */

@@ -5,9 +5,6 @@
 <head>
     <meta charset="utf-8" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="./EventRecommender.js"></script>
-    <script src="jQuery-scripts.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
 
 
@@ -31,105 +28,134 @@
             <form id="add-user">
                 <div class="input-area">
                     <label>username:</label>
-                    <input type=" text " class="text-field " id="add-user-id "></div>
+                    <input type="text" class="text-field" id="add-username"></div>
 
-                <div class="input-area "><label>user's name:</label>
-                    <input type="text " class="text-field " id="add-user-name "></div>
+                <div class="input-area"><label>name:</label>
+                    <input type="text" class="text-field" id="add-title"></div>
 
                 <!-- Add more form fields here -->
-                <input type="submit " class="form-buttons " value="add user ">
+                <input type="submit" class="form-buttons" value="add user"> </form>
         </div>
-        </form>
+
+
+
+
+
+        <div>
+            <h3>Delete User</h3>
+            <form id="delete-user">
+                <label>username:</label>
+                <input type="text" class="text-field" id="delete-user">
+                <br/>
+                <input type="submit" class="form-buttons delete-buttons" value="are you sure?">
+            </form>
+        </div>
+
+        <br/>
+
+        <h2>Event Management</h2>
+        <div>
+            <h3>All Events</h3>
+            <ul id="all-events">
+                <!-- Use jQuery to display all Events here -->
+            </ul>
+
+            <h3>Add Event</h3>
+            <form id="add-event">
+                <label>event name:</label>
+                <input type="text" class="text-field" id="add-event-name">
+                <br/>
+                <label>date:</label>
+                <!--date object-->
+                <input type="text" class="text-field" id="add-date">
+                <br/>
+                <label>category:</label>
+                <!--dropdown list-->
+                <input type="text" class="text-field" id="add-category">
+                <br/>
+                <label>city:</label>
+                <!--dropdown list-->
+                <input type="text" class="text-field" id="add-city">
+                <br/>
+                <label>venue:</label>
+                <input type="text" class="text-field" id="add-venue">
+                <br/>
+                <label>showtime:</label>
+                <!--date object-->
+                <input type="text" class="text-field" id="add-showtime">
+                <br/>
+                <label>description:</label>
+                <input type="text" class="text-field" id="add-description">
+                <br/>
+                <input type="submit" class="form-buttons" value="add event">
+                <!-- make this generate an ID number -->
+            </form>
+        </div>
+
+        <div>
+            <h3>Delete Event</h3>
+            <form id="delete-event">
+                <label>event identification:</label>
+                <input type="text" class="text-field" id="delete-event-id">
+                <br/>
+                <input type="submit" class="form-buttons delete-buttons" value="are you sure?">
+            </form>
+        </div>
+
+
+
+        <br/>
+
+        <h2>Event Search and Save</h2>
+        <div>
+            <h3>Find Events by Date</h3>
+            <form id="date-search">
+                <label>event date:</label>
+                <input type="date" class="text-field" id="date-search-id">
+                <br/>
+                <input type="submit" class="form-buttons find-buttons" value="find events">
+            </form>
+            <h4>Results:</h4>
+            <ol>
+                <!-- Use jQuery to add search results here-->
+            </ol>
+        </div>
+
+        <div>
+            <h3>Find Events by Category</h3>
+            <form id="category-search">
+                <label>Event category:</label>
+                <input type="text" class="text-field" id="category-search-id">
+                <br/>
+                <input type="submit" class="form-buttons find-buttons" value="find events">
+            </form>
+            <h4>Results:</h4>
+            <ol>
+                <!-- Use jQuery to add search results here-->
+            </ol>
+        </div>
+
+        <div>
+            <h3>Save Event for User</h3>
+            <form id="save-user-event">
+                <label>username:</label>
+                <input type="text" class="like-button" id="pull-user">
+                <br/>
+                <label>Event ID:</label>
+                <input type="text" class="like-button" id="pull-event">
+                <br/>
+                <input type="submit" class="form-buttons find-buttons" id="push-event-button">
+            </form>
+            <h3>my saved events</h3>
+            <ul id="my-events">
+                <!-- Use jQuery to display all Events here -->
+            </ul>
+        </div>
     </div>
-
-    <div>
-        <h3>Delete User</h3>
-        <form id="delete-user ">
-            <label>username:</label>
-            <input type="text " class="text-field " id="delete-user-id ">
-            <br/>
-            <input type="submit " class="form-buttons delete-buttons " value="are you sure? ">
-        </form>
-    </div>
-
-    <br/>
-
-    <h2>Event Management</h2>
-    <div>
-        <h3>All Events</h3>
-        <ul>
-            <!-- Use jQuery to display all Events here -->
-        </ul>
-
-        <h3>Add Event</h3>
-        <form id="add-event ">
-            <label>event identification:</label>
-            <input type="text " class="text-field " id="add-event-id ">
-            <br/>
-            <label>event name:</label>
-            <input type="text " class="text-field " id="add-event-name ">
-            <br/>
-            <!-- Add more form fields here -->
-            <input type="submit " class="form-buttons " value="add event ">
-        </form>
-    </div>
-
-    <div>
-        <h3>Delete Event</h3>
-        <form id="delete-event ">
-            <label>event identification:</label>
-            <input type="text " class="text-field " id="delete-event-id ">
-            <br/>
-            <input type="submit " class="form-buttons delete-buttons " value="are you sure? ">
-        </form>
-    </div>
-
-
-
-    <br/>
-
-    <h2>Event Search and Save</h2>
-    <div>
-        <h3>Find Events by Date</h3>
-        <form id="date-search ">
-            <label>event date:</label>
-            <input type="date " class="text-field " id="date-search-id ">
-            <br/>
-            <input type="submit " class="form-buttons find-buttons " value="find events ">
-        </form>
-        <h4>Results:</h4>
-        <ol>
-            <!-- Use jQuery to add search results here-->
-        </ol>
-    </div>
-
-    <div>
-        <h3>Find Events by Category</h3>
-        <form id="category-search ">
-            <label>Event category:</label>
-            <input type="text " class="text-field " id="category-search-id ">
-            <br/>
-            <input type="submit " class="form-buttons find-buttons " value="find events ">
-        </form>
-        <h4>Results:</h4>
-        <ol>
-            <!-- Use jQuery to add search results here-->
-        </ol>
-    </div>
-
-    <div>
-        <h3>Save Event for User</h3>
-        <form id="save-user-event ">
-            <label>User ID:</label>
-            <input type="text " class="like-button " id="save-user-id ">
-            <br/>
-            <label>Event ID:</label>
-            <input type="text " class="like-button " id="save-event-id ">
-            <br/>
-            <input type="submit ">
-        </form>
-    </div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="EventRecommender.js"></script>
+    <script src="jQuery-scripts.js"></script>
 </body>
 
 </html>

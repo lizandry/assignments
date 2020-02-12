@@ -2,13 +2,17 @@ class EventRecommender {
     constructor() {
         this.events = [];
         this.users = [];
+        this.userEvents = {};
     }
 
-    addEvent(event) {
-        this.events.push(event);
+    addEvent(id, title, date, category, location, venue, description, showtime) {
+        let x = new Event(id, title, date, category, location, venue, description, showtime);
+        this.events.push(x);
+        //add an ID generator and date objects
     }
-    addUser(user) {
-        this.users.push(user);
+    addUser(username, title, zipcode) {
+        let x = new User(username, title, zipcode);
+        this.users.push(x);
     }
     saveUserEvent(user, event) {
         user.saveEvent(event)
@@ -42,15 +46,15 @@ class EventRecommender {
     }
 }
 class User {
-    constructor(id, chosenName, zipcode) {
-        this.id = id;
-        this.chosenName = chosenName;
+    constructor(username, title, zipcode) {
+        this.username = username;
+        this.title = title;
         this.zipcode = zipcode;
         this.savedEvents = [];
     }
 
     changeName(newName) {
-        this.chosenName = newName;
+        this.title = newName;
     }
     changeZip(newZip) {
         this.zipcode = newZip;
