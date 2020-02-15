@@ -15,22 +15,29 @@ class EventRecommender {
         this.users.push(x);
     }
     saveUserEvent(user, event) {
-        user.saveEvent(event)
+        user.saveEvent(event);
+    }
+    deleteUserEvent(user, event) {
+        user.deleteEvent(event);
     }
 
     //other folks were talking about using filter to delete stuff
     deleteUser(badUser) {
         //click conditional
         //"are you sure?" prompt
-        this.users.splice(badUser, 1);
-        return this.users;
+        return this.users.filter(user => user.username !== badUser)
+            //is this right?
+            // this.users.splice(badUser, 1);
+            // return this.users;
     }
+
+    //NOT SURE IF DELETEUSER OR DELETEEVENTS IS CORRECT SYNTAX
 
     //click conditional
     //"warning" prompt
     deleteEvent(badEvent) {
-        this.events.splice(badEvent, 1);
-        return this.events;
+        //this.events.splice(badEvent, 1);
+        this.events = this.events.filter(event => event.id !== badEvent);
     }
 
     //there is no way on earth that this function currently works
@@ -64,6 +71,12 @@ class User {
         //  onclick,
         this.savedEvents.push(event);
         //this seems complex
+    }
+    deleteEvent(event) {
+
+        this.savedEvents = this.savedEvents.filter(eachEvent => eachEvent.id !== event);
+        //this.events = this.events.filter(event => event.id !== badEvent);
+        //let userEvents = user.savedEvents.find(event => event.id === eventID);
     }
 }
 

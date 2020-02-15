@@ -34,7 +34,7 @@
                     <input type="text" class="text-field" id="add-title"></div>
 
                 <!-- Add more form fields here -->
-                <input type="submit" class="form-buttons" value="add user"> </form>
+                <input type="button" class="form-buttons" value="add user"> </form>
         </div>
 
 
@@ -45,9 +45,9 @@
             <h3>Delete User</h3>
             <form id="delete-user">
                 <label>username:</label>
-                <input type="text" class="text-field" id="delete-user">
+                <input type="text" class="text-field" id="user-to-delete">
                 <br/>
-                <input type="submit" class="form-buttons delete-buttons" value="are you sure?">
+                <input type="button" class="form-buttons delete-buttons" value="are you sure?">
             </form>
         </div>
 
@@ -87,7 +87,7 @@
                 <label>description:</label>
                 <input type="text" class="text-field" id="add-description">
                 <br/>
-                <input type="submit" class="form-buttons" value="add event">
+                <input type="button" class="form-buttons" value="add event">
                 <!-- make this generate an ID number -->
             </form>
         </div>
@@ -98,7 +98,7 @@
                 <label>event identification:</label>
                 <input type="text" class="text-field" id="delete-event-id">
                 <br/>
-                <input type="submit" class="form-buttons delete-buttons" value="are you sure?">
+                <input type="button" class="form-buttons delete-buttons" value="are you sure?">
             </form>
         </div>
 
@@ -113,7 +113,7 @@
                 <label>event date:</label>
                 <input type="date" class="text-field" id="date-search-id">
                 <br/>
-                <input type="submit" class="form-buttons find-buttons" value="find events">
+                <input type="button" class="form-buttons find-buttons" value="find events">
             </form>
             <h4>Results:</h4>
             <ol>
@@ -127,7 +127,7 @@
                 <label>Event category:</label>
                 <input type="text" class="text-field" id="category-search-id">
                 <br/>
-                <input type="submit" class="form-buttons find-buttons" value="find events">
+                <input type="button" class="form-buttons find-buttons" value="find events">
             </form>
             <h4>Results:</h4>
             <ol>
@@ -144,7 +144,7 @@
                 <label>Event ID:</label>
                 <input type="text" class="like-button" id="pull-event">
                 <br/>
-                <input type="submit" class="form-buttons find-buttons" id="push-event-button">
+                <input type="button" class="form-buttons find-buttons" id="push-event-button" value='click here to save (or delete)'>
             </form>
             <h3>my saved events</h3>
             <ul id="my-events">
