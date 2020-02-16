@@ -13,16 +13,66 @@ $(document).ready(() => {
     website.addEvent('00006', 'against me!', new Date(2020, 06, 23), 'concert', 'San Francisco, CA', 'Great American Music Hall', 'hell yeah, that\'s them. that\'s against me!!', '19:00');
 
 
-    // let x = new Event(id, title, date, category, location, venue, description, showtime);
+
+    //displays all users
+    $.each(website.users, function() {
+        $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
+    });
+    //adds user, will check for unique username eventually
+    $('#add-user-button').on('click', function(event) {
+        let username = $('#add-username')[0].value;
+        let title = $('#add-title')[0].value;
+        let zipcode = '94608';
+        website.addUser(username, title, zipcode);
+        // console.log(website.users);
+        $("form").trigger("reset");
+    });
+    //deletes user
+    //something's being lost between here and the function
+    $('#delete-user-button').on('click', function(event) {
+        let username = $('#user-to-delete')[0].value;
+        website.deleteUser(username);
+        // console.log(website.users);
+        $("form").trigger("reset");
+    });
+
+
+
+
+
+
+
+    //displays all events
+    $.each(website.events, function() {
+        $('#all-events').append(`<li><class="event-title">${this.title}<br>
+        ${this.location} - ${this.venue} - ${this.date}<br>
+        ${this.description}</li>
+        `);
+    });
+
+    //add event by: name, date, keywords, city, venue, showtime, description //this should generate an event ID number!
+
+    //deletes event by ID number
+    $('#delete-event-button').on('click', function(event) {
+        let eventID = $('#event-to-delete')[0].value;
+        website.deleteEvent(eventID);
+        //console.log("this event ", eventID)
+        //console.log("list of events ", website.events);
+        $("form").trigger("reset");
+    });
+
+
+
+    // let x = new Event(id, title, date, keywords, location, venue, description, showtime);
     // let x = new User(username, title, zipcode);
 
-
+    //adds user events
     //currently a like/unlike form. but one day it'll be a fav button
     //and i'll be able to set its state in react!
-    $('#push-event-button').on('click', function(event) {
+    $('#save-event-to-user-button').on('click', function(event) {
 
-        let username = $('#pull-user')[0].value;
-        let eventID = $('#pull-event')[0].value;
+        let username = $('#user-likes-event')[0].value;
+        let eventID = $('#event-user-likes')[0].value;
         let user = website.users.find(user => user.username === username);
         let eventArr = website.events.find(event => event.id === eventID);
         let userEvents = user.savedEvents.find(event => event.id === eventID);
@@ -32,46 +82,31 @@ $(document).ready(() => {
         } else if (!userEvents) {
             website.saveUserEvent(user, eventArr)
         }
-        console.log("lizandry savedEvents", website.users[0].savedEvents);
+        //console.log("lizandry savedEvents", website.users[0].savedEvents);
+        $("form").trigger("reset");
+
+        //this is currently nothing. am trying to move below function (display saved events) into this function
+        // $('#my-events').append(`
+        //     <li>
+        //         ${website.users.savedEvents} <br>
+        //     </li>
+        //     `);
+
     });
 
 
 
 
-    // $('#push-event-button').on('click', function(event) {
-    //     console.log("test");
-    //     console.log(website.users);
-    //     let username = $('#pull-user')[0].value;
-    //     let eventID = $('#pull-event')[0].value;
-    //     // Find matching user and event from website.users and website.events
-    //     let user = website.users.find(user => user.username === username);
-    //     let userEvent = website.events.find(event => event.id === eventID);
-    //     // Update matching user to have event (user.saveEvent(event))
-    //     website.saveUserEvent(user, userEvent)
-    //     console.log(website.users[0].savedEvents);
+    //this might work, might not. definitely doesn't work currently
+    // $.each(website.users, function() {
+    //     $('#my-events').append(`
+    //     <li>
+    //         ${this.savedEvents}<br>
+    //     </li>
+    //     `);
     // });
-
-    //.username only will return usernames
-    //taking .username. out returns a blank array
-    $.each(website.users, function() {
-        $('#my-events').append(`
-        <li>
-            ${this.savedEvents}<br>
-        </li>
-        `);
-    });
     // ${this.savedEvents.event.title}<br>
     // ${this.savedEvents.location} - ${this.savedEvents.venue} - ${this.savedEvents.date}
-    $.each(website.users, function() {
-        $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
-    });
-    $.each(website.events, function() {
-        $('#all-events').append(`<li><class="event-title">${this.title}<br>
-        ${this.location} - ${this.venue} - ${this.date}<br>
-        ${this.description}</li>
-        `);
-    });
-
     // this.savedEvents.map(e => {
     //     <li>
     //         ${e.title}<br/>

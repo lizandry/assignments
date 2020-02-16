@@ -34,7 +34,7 @@
                     <input type="text" class="text-field" id="add-title"></div>
 
                 <!-- Add more form fields here -->
-                <input type="button" class="form-buttons" value="add user"> </form>
+                <input type="button" class="form-buttons" id='add-user-button' value="add user"> </form>
         </div>
 
 
@@ -47,7 +47,7 @@
                 <label>username:</label>
                 <input type="text" class="text-field" id="user-to-delete">
                 <br/>
-                <input type="button" class="form-buttons delete-buttons" value="are you sure?">
+                <input type="button" class="form-buttons delete-buttons" id='delete-user-button' value="are you sure?">
             </form>
         </div>
 
@@ -67,28 +67,27 @@
                 <br/>
                 <label>date:</label>
                 <!--date object-->
-                <input type="text" class="text-field" id="add-date">
+                <input type="date" class="text-field" id="add-event-date">
                 <br/>
-                <label>category:</label>
+                <label>keywords:</label>
                 <!--dropdown list-->
-                <input type="text" class="text-field" id="add-category">
+                <input type="text" class="text-field" id="add-event-keywords">
                 <br/>
                 <label>city:</label>
                 <!--dropdown list-->
-                <input type="text" class="text-field" id="add-city">
+                <input type="text" class="text-field" id="add-event-city">
                 <br/>
                 <label>venue:</label>
-                <input type="text" class="text-field" id="add-venue">
+                <input type="text" class="text-field" id="add-event-venue">
                 <br/>
                 <label>showtime:</label>
                 <!--date object-->
-                <input type="text" class="text-field" id="add-showtime">
+                <input type="text" class="text-field" id="add-event-showtime">
                 <br/>
                 <label>description:</label>
-                <input type="text" class="text-field" id="add-description">
+                <input type="text" class="text-field" id="add-event-description">
                 <br/>
                 <input type="button" class="form-buttons" value="add event">
-                <!-- make this generate an ID number -->
             </form>
         </div>
 
@@ -96,9 +95,9 @@
             <h3>Delete Event</h3>
             <form id="delete-event">
                 <label>event identification:</label>
-                <input type="text" class="text-field" id="delete-event-id">
+                <input type="text" class="text-field" id='event-to-delete'>
                 <br/>
-                <input type="button" class="form-buttons delete-buttons" value="are you sure?">
+                <input type="button" class="form-buttons delete-buttons" id='delete-event-button' value="are you sure?">
             </form>
         </div>
 
@@ -122,10 +121,10 @@
         </div>
 
         <div>
-            <h3>Find Events by Category</h3>
-            <form id="category-search">
-                <label>Event category:</label>
-                <input type="text" class="text-field" id="category-search-id">
+            <h3>find events by keywords</h3>
+            <form id="keywords-search">
+                <label>event keywords:</label>
+                <input type="text" class="text-field" id="keywords-search-id">
                 <br/>
                 <input type="button" class="form-buttons find-buttons" value="find events">
             </form>
@@ -137,14 +136,14 @@
 
         <div>
             <h3>Save Event for User</h3>
-            <form id="save-user-event">
+            <form class='like-button' id="save-user-event">
                 <label>username:</label>
-                <input type="text" class="like-button" id="pull-user">
+                <input type="text" class="text-field" id="user-likes-event">
                 <br/>
                 <label>Event ID:</label>
-                <input type="text" class="like-button" id="pull-event">
+                <input type="text" class="text-field" id="event-user-likes">
                 <br/>
-                <input type="button" class="form-buttons find-buttons" id="push-event-button" value='click here to save (or delete)'>
+                <input type="button" class="form-buttons find-buttons" id="save-event-to-user-button" value='click here to save (or delete)'>
             </form>
             <h3>my saved events</h3>
             <ul id="my-events">

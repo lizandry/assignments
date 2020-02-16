@@ -5,8 +5,8 @@ class EventRecommender {
         this.userEvents = {};
     }
 
-    addEvent(id, title, date, category, location, venue, description, showtime) {
-        let x = new Event(id, title, date, category, location, venue, description, showtime);
+    addEvent(id, title, date, keywords, location, venue, description, showtime) {
+        let x = new Event(id, title, date, keywords, location, venue, description, showtime);
         this.events.push(x);
         //add an ID generator and date objects
     }
@@ -23,20 +23,12 @@ class EventRecommender {
 
     //other folks were talking about using filter to delete stuff
     deleteUser(badUser) {
-        //click conditional
         //"are you sure?" prompt
-        return this.users.filter(user => user.username !== badUser)
-            //is this right?
-            // this.users.splice(badUser, 1);
-            // return this.users;
+        this.users = this.users.filter(user => user.username !== badUser)
     }
 
-    //NOT SURE IF DELETEUSER OR DELETEEVENTS IS CORRECT SYNTAX
-
-    //click conditional
-    //"warning" prompt
     deleteEvent(badEvent) {
-        //this.events.splice(badEvent, 1);
+        //"are you sure?" prompt
         this.events = this.events.filter(event => event.id !== badEvent);
     }
 
@@ -48,8 +40,8 @@ class EventRecommender {
     }
 
     //findEventsByDistance{}
-    findEventsbyCategory(userCategory) {
-        return this.events.filter(event => event.category === userCategory);
+    findEventsbyKeywords(userKeywords) {
+        return this.events.filter(event => event.keywords === userKeywords);
     }
 }
 class User {
@@ -81,11 +73,11 @@ class User {
 }
 
 class Event {
-    constructor(id, title, date, category, location, venue, description, showtime) {
+    constructor(id, title, date, keywords, location, venue, description, showtime) {
         this.id = id;
         this.title = title;
         this.date = new Date(date);
-        this.category = category;
+        this.keywords = keywords;
         this.location = location;
         this.venue = venue;
         this.description = description;
