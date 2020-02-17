@@ -21,7 +21,7 @@ describe("EventRecommender", () => {
         it("adds a new User to the system", () => {
             er.addUser(us);
             expect(er.users.length).toEqual(1);
-            expect(er.users[0].chosenName).toEqual('liz');
+            expect(er.users[0].title).toEqual('liz');
             expect(er.users[0].zipcode).toEqual(94608);
         });
     });
@@ -87,9 +87,9 @@ describe("EventRecommender", () => {
     describe('changeName', () => {
         it("allows the user to change their name", () => {
             let usDel = new User(666, 'doomed', 91773);
-            expect(usDel.chosenName).toEqual('doomed');
+            expect(usDel.title).toEqual('doomed');
             usDel.changeName('saved');
-            expect(usDel.chosenName).toEqual('saved');
+            expect(usDel.title).toEqual('saved');
             // expect(er.findEventsbyCategory('bluegrass')).toEqual([]);
             // expect(er.events.length).toEqual(0);
 

@@ -2,31 +2,42 @@ class EventRecommender {
     constructor() {
         this.events = [];
         this.users = [];
+        this.userEvents = {};
     }
 
-    addEvent(event) {
-        this.events.push(event);
+    addEvent(id, title, date, category, location, venue, description, showtime) {
+        let x = new Event(id, title, date, category, location, venue, description, showtime);
+        this.events.push(x);
+        //add an ID generator and date objects
     }
-    addUser(user) {
-        this.users.push(user);
+    addUser(username, title, zipcode) {
+        let x = new User(username, title, zipcode);
+        this.users.push(x);
     }
     saveUserEvent(user, event) {
-        user.saveEvent(event)
+        user.saveEvent(event);
+    }
+    deleteUserEvent(user, event) {
+        user.deleteEvent(event);
     }
 
     //other folks were talking about using filter to delete stuff
     deleteUser(badUser) {
         //click conditional
         //"are you sure?" prompt
-        this.users.splice(badUser, 1);
-        return this.users;
+        return this.users.filter(user => user.username !== badUser)
+            //is this right?
+            // this.users.splice(badUser, 1);
+            // return this.users;
     }
+
+    //NOT SURE IF DELETEUSER OR DELETEEVENTS IS CORRECT SYNTAX
 
     //click conditional
     //"warning" prompt
     deleteEvent(badEvent) {
-        this.events.splice(badEvent, 1);
-        return this.events;
+        //this.events.splice(badEvent, 1);
+        this.events = this.events.filter(event => event.id !== badEvent);
     }
 
     //there is no way on earth that this function currently works
@@ -42,15 +53,15 @@ class EventRecommender {
     }
 }
 class User {
-    constructor(id, chosenName, zipcode) {
-        this.id = id;
-        this.chosenName = chosenName;
+    constructor(username, title, zipcode) {
+        this.username = username;
+        this.title = title;
         this.zipcode = zipcode;
         this.savedEvents = [];
     }
 
     changeName(newName) {
-        this.chosenName = newName;
+        this.title = newName;
     }
     changeZip(newZip) {
         this.zipcode = newZip;
@@ -60,6 +71,12 @@ class User {
         //  onclick,
         this.savedEvents.push(event);
         //this seems complex
+    }
+    deleteEvent(event) {
+
+        this.savedEvents = this.savedEvents.filter(eachEvent => eachEvent.id !== event);
+        //this.events = this.events.filter(event => event.id !== badEvent);
+        //let userEvents = user.savedEvents.find(event => event.id === eventID);
     }
 }
 
