@@ -12,12 +12,11 @@ $(document).ready(() => {
     website.addEvent('00005', 'San Francisco Food and Wine Festival', new Date(2020, 06, 22), 'culture', 'San Francisco, CA', 'Fort Mason Center', 'come enjoy some food and wine', '12:00');
     website.addEvent('00006', 'against me!', new Date(2020, 06, 23), 'concert', 'San Francisco, CA', 'Great American Music Hall', 'hell yeah, that\'s them. that\'s against me!!', '19:00');
 
+    function fetchData(url) {
+        return fetch(url)
+            .then(res => res.json());
+    }
 
-
-    //displays all users
-    $.each(website.users, function() {
-        $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
-    });
     //adds user, will check for unique username eventually
     $('#add-user-button').on('click', function(event) {
         let username = $('#add-username')[0].value;
@@ -42,13 +41,7 @@ $(document).ready(() => {
 
 
 
-    //displays all events
-    $.each(website.events, function() {
-        $('#all-events').append(`<li><class="event-title">${this.title}<br>
-        ${this.location} - ${this.venue} - ${this.date}<br>
-        ${this.description}</li>
-        `);
-    });
+
 
     //add event by: name, date, keywords, city, venue, showtime, description //this should generate an event ID number!
 
@@ -84,35 +77,40 @@ $(document).ready(() => {
         } else if (!userEvents) {
             website.saveUserEvent(user, eventArr)
         }
+        displayUserEvents();
         //console.log("lizandry savedEvents", website.users[0].savedEvents);
         $("form").trigger("reset");
+    });
 
-        //this is currently nothing. am trying to move below function (display saved events) into this function
-        // $('#my-events').append(`
-        //     <li>
-        //         ${website.users.savedEvents} <br>
-        //     </li>
-        //     `);
+    //make it refresh itself whenever a new event is added to a user
+    //i'm thinking: turn each 
+    function displayUserEvents() {
+        for (user of website.users) {
+            //would be hilarious, if this worked
+            let userEvents = user.savedEvents.map(e => `<li>${e.title}<br>${e.location} - ${e.date}<br>${e.description}</li>`)
+            $('#my-events').append(`${user.title}'s saved events:<br>${userEvents}`)
 
+        }
+    }
+
+
+    //
+    //--------------------   
+    //display functions
+    //--------------------
+    //
+    //displays all users
+    $.each(website.users, function() {
+        $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
+    });
+    //displays all events
+    $.each(website.events, function() {
+        $('#all-events').append(`<li><class="event-title">${this.title}<br>
+    ${this.location} - ${this.venue} - ${this.date}<br>
+    ${this.description}</li>
+    `);
     });
 
 
 
-
-    //this might work, might not. definitely doesn't work currently
-    // $.each(website.users, function() {
-    //     $('#my-events').append(`
-    //     <li>
-    //         ${this.savedEvents}<br>
-    //     </li>
-    //     `);
-    // });
-    // ${this.savedEvents.event.title}<br>
-    // ${this.savedEvents.location} - ${this.savedEvents.venue} - ${this.savedEvents.date}
-    // this.savedEvents.map(e => {
-    //     <li>
-    //         ${e.title}<br/>
-    //         ${e.location} - ${e.venue}
-    //     </li>
-    // })
 });
