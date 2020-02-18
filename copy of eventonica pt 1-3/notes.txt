@@ -1,0 +1,43 @@
+What classes will you create?
+What properties should each class have? Think about: What properties are needed to complete the assignment? 
+What other properties would be helpful to include as well?
+What methods should each class have
+
+
+
+
+Search/Recommender:
+methods: searchByDate, searchByCat
+
+Users:
+properties: chosenName, firstName, address, lastName, zipcode, disabilities, favorites[];
+conditions(ie has kids, weekends and weeknights only, etc)
+(legal name and address only for security/confirmation reasons ie billing, 21+ shows)
+methods: changeName, addAddress, addZipCode, (general privacy stuff),
+addVenuePreferences(disabilities and conditions, categories enjoyed)
+-Add a new User to the System
+-Allow users to save events to a personal Events array
+-Delete a User from the System
+
+Event
+properties: title, main performer, date, category, venue, 
+description, doorTime, showTime,
+methods: 
+addEvent, deleteEvent
+
+Event subclasses/categories
+concerts: primary performers, secondary performers
+sports: opponants
+festivals: open AND close, date range, 
+arts & theatre: 
+family: 
+
+
+class or event subclass venue
+ seating, accessibility, parking, zip code, 
+ methods: 
+
+
+class EventRecommender
+properties: dates, attendees, 
+methods: compareLocations/distance, checkVenuePreferences, dateSelector, attendeeSelector
