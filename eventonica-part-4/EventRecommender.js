@@ -5,8 +5,8 @@ class EventRecommender {
         this.userEvents = {};
     }
 
-    addEvent(id, title, date, keywords, location, venue, description, showtime) {
-        let x = new Event(id, title, date, keywords, location, venue, description, showtime);
+    addEvent(id, title, date, keyword, location, venue, description, showtime) {
+        let x = new Event(id, title, date, keyword, location, venue, description, showtime);
         this.events.push(x);
         //add an ID generator and date objects
     }
@@ -40,9 +40,20 @@ class EventRecommender {
     }
 
     //findEventsByDistance{}
-    findEventsbyKeywords(userKeywords) {
-        return this.events.filter(event => event.keywords === userKeywords);
+    findEventsbyKeyword(userKeyword) {
+        let results = this.fetchData(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${userKeyword}&postalCode=94103&apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
+            .then(console.log(results))
+            // let filteredEvents = this.events.filter(event => event.keyword === userKeyword);
+            // console.log('trouble here?', filteredEvents)
+            // return filteredEvents;
     }
+
+    //pre-API
+    // findEventsbyKeyword(userKeyword) {
+    //     let filteredEvents = this.events.filter(event => event.keyword === userKeyword);
+    //     console.log('trouble here?', filteredEvents)
+    //     return filteredEvents;
+    // }
 }
 class User {
     constructor(username, title, zipcode) {
@@ -73,18 +84,19 @@ class User {
 }
 
 class Event {
-    constructor(id, title, date, keywords, location, venue, description, showtime) {
+    constructor(id, title, date, keyword, location, venue, description, showtime) {
         this.id = id;
         this.title = title;
         this.date = new Date(date);
-        this.keywords = keywords;
+        this.keyword = keyword;
         this.location = location;
         this.venue = venue;
         this.description = description;
         this.showtime = showtime;
 
         this.availableTickets = [];
-        this.keywords = [];
+        //is this necessary?
+        //this.keyword = [];
 
     }
     addAvailableTickets(seating, price) {
