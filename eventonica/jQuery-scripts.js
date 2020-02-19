@@ -15,6 +15,9 @@ $(document).ready(() => {
     function fetchData(url) {
         return fetch(url)
             .then(res => res.json());
+        // .catch(error => console.log('there was a problem', error));
+
+
     }
 
     //adds user, will check for unique username eventually

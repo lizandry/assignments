@@ -21,7 +21,6 @@ class EventRecommender {
         user.deleteEvent(event);
     }
 
-    //other folks were talking about using filter to delete stuff
     deleteUser(badUser) {
         //"are you sure?" prompt
         this.users = this.users.filter(user => user.username !== badUser)
@@ -62,10 +61,7 @@ class User {
         this.zipcode = newZip;
     }
     saveEvent(event) {
-        //also changes UI
-        //  onclick,
         this.savedEvents.push(event);
-        //this seems complex
     }
     deleteEvent(event) {
 
@@ -102,11 +98,6 @@ class TicketType {
         this.price = price;
     }
 }
-
-
-
-//const ticketMaster = new EventRecommender()
-
 
 if (typeof module != 'undefined') {
     module.exports = { EventRecommender, User, Event }

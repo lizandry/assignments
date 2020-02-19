@@ -1,9 +1,29 @@
--make "results" load when the actual info is fetched
--standardize single-quotes
--hide events and users behind a button
--update the user and event UI when a new one is added
--figure out date objects and how to use them to search by date
--make some drop-down menus
--use event ids
--turn ticketmaster events into my events/line up my events with ticketmaster's verbage
--on 'focus' is better for accessibility, but 
+
+
+-date objects
+-search by date function
+-create events function
+-align event creation with ticketmaster's object keys/use event ids
+-hide 'results' until results are summoned
+-hide user and events info behind at least a button
+-update UI when new users and events are added
+-fix how events display after being added to a user
+-eventually this will display by user
+-refresh results instead of adding a new body with near-identical info
+-will probably want to consider how both city and zipcode can be used
+-add in "are you sure?" prompts for deleting info
+-more api search parameters
+-comprehensive labels to navigate my code by
+-some dropdown lists
+-get user management on a different url path
+-take some time to neaten up single-quotes and standardize html tagging
+-on 'focus' is better for accessibility, but makes the button click again when you navigate back to the page
+-migrate displayUserEvents to eventRecommender class
+-check for unique usernames
+-can't submit empty forms
+
+
+
+-index.js
+-set up express
+-import eventRecommender (rewrite eventRecommender in express)
