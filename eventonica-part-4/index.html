@@ -110,7 +110,19 @@
 
         <br/>
 
-        <h2>Event Search and Save</h2>
+        <h2>import events from ticketmaster</h2>
+
+        <div>
+            <h3>import first event from ticketmaster</h3>
+            <form>
+                <input type="button" class="form-buttons find-buttons" id='return-first-ticketmaster-result-button' value='do it, coward'>
+            </form>
+            <h4>Result:</h4>
+            <ol id='single-ticketmaster-event'>
+                <!-- Use jQuery to add search results here-->
+            </ol>
+        </div>
+
         <div>
             <h3>Find Events by Date</h3>
             <form id="date-search">
@@ -139,7 +151,7 @@
                 <!-- Use jQuery to add search results here-->
             </ol>
         </div>
-
+        <h2>this is functionally a "like" button with a lot of legwork!</h2>
         <div>
             <h3>Save Event for User</h3>
             <form class='like-button' id="save-user-event">
@@ -151,7 +163,7 @@
                 <br/>
                 <input type="button" class="form-buttons find-buttons" id="save-event-to-user-button" value='click here to save (or delete)'>
             </form>
-            <h3>my saved events</h3>
+            <h3>saved events</h3>
             <ul id="my-events">
                 <!-- Use jQuery to display all Events here -->
             </ul>
