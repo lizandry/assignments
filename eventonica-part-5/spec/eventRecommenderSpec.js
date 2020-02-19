@@ -1,5 +1,5 @@
 describe("EventRecommender", () => {
-    const { EventRecommender, User, Event } = require('../EventRecommender.js'); // Update with your class names and file name
+    const { EventRecommender, User, Event } = require('../EventRecommender.js');
     let er;
     let ev = new Event(987654, 'the party', '2020-06-18', 'pop', 'los angeles, CA', 'henry fonda theatre', 'a real fuckin party', '20:00');
     let us = new User(123456, 'liz', 94608);
