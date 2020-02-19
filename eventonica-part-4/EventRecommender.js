@@ -40,14 +40,6 @@ class EventRecommender {
     }
 
     //findEventsByDistance{}
-    findEventsbyKeyword(userKeyword) {
-        let results = this.fetchData(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${userKeyword}&postalCode=94103&apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
-            .then(console.log(results))
-            // let filteredEvents = this.events.filter(event => event.keyword === userKeyword);
-            // console.log('trouble here?', filteredEvents)
-            // return filteredEvents;
-    }
-
     //pre-API
     // findEventsbyKeyword(userKeyword) {
     //     let filteredEvents = this.events.filter(event => event.keyword === userKeyword);

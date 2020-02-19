@@ -11,7 +11,8 @@ $(document).ready(() => {
     website.addEvent('00004', '...and you will know us by the trail of dead', new Date(2020, 06, 21), 'concert', 'San Francisco, CA', 'Slim\'s', 'they\'re about to rock your socks off', '21:00');
     website.addEvent('00005', 'San Francisco Food and Wine Festival', new Date(2020, 06, 22), 'culture', 'San Francisco, CA', 'Fort Mason Center', 'come enjoy some food and wine', '12:00');
     website.addEvent('00006', 'against me!', new Date(2020, 06, 23), 'concert', 'San Francisco, CA', 'Great American Music Hall', 'hell yeah, that\'s them. that\'s against me!!', '19:00');
-    //addEvent(id, title, date, keyword, location, venue, description, showtime)
+    // addEvent(id, title, date, keyword, location, venue, description, showtime)
+
     function fetchData(url) {
         return fetch(url)
             .then(res => res.json());
@@ -77,20 +78,18 @@ $(document).ready(() => {
     //--------------------
     //
     //keyword search that adds <li> elements under "results"
-    $('#find-event-by-keyword-button').on('focus', function(event) {
+    $('#find-event-by-keyword-button').on('click', function(event) {
         let keyword = $('#keyword-search-field')[0].value;
-        //results is nothing
-
-        let results = fetchData() //.then(website.findEventsbyKeyword(keyword))
-        console.log('filtered results', results)
-        results.map(e => {
-            $('#all-results-by-keyword').append(`<li class='event-title'> ${e.title}<br>
-            ${e.location} - ${e.venue} - ${e.date}<br>
-        ${e.description}</li>`);
-        });
+        fetchData(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&postalCode=94103&apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
+            .then(data => {
+                data._embedded.events.map(e => {
+                    $('#all-results-by-keyword').append(`<li class='event-title'> <a href='${e.url}'>${e.name}</a>
+                     </li>`);
+                });
+            })
         $("form").trigger("reset");
     });
-    //this was pre-API integration
+    //pre-API code
     // $('#find-event-by-keyword-button').on('focus', function(event) {
     //     let keyword = $('#keyword-search-field')[0].value;
     //     //results is nothing
@@ -103,11 +102,6 @@ $(document).ready(() => {
     //     });
     //     $("form").trigger("reset");
     // });
-
-    // findEventsbyKeyword(userKeyword) {
-    //     return this.events.filter(event => event.keyword === userKeyword);
-    // }
-
     //
     //--------------------   
     //display functions
