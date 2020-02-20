@@ -2,10 +2,16 @@ class EventRecommender {
     constructor() {
         this.events = [];
         this.users = [];
-        this.userEvents = {};
     }
 
-    addEvent(id, title, date, keyword, location, venue, description, showtime) {
+    addEvent(params) {
+        // id, title, date, keyword, location, venue, description, showtime) {
+        let x = new Event(params.id, params.title, params.date, params.keyword, params.location, params.venue, params.description, params.showtime);
+        this.events.push(x);
+        //add an ID generator and date objects
+    }
+
+    addEventByAttributes(id, title, date, keyword, location, venue, description, showtime) {
         let x = new Event(id, title, date, keyword, location, venue, description, showtime);
         this.events.push(x);
         //add an ID generator and date objects

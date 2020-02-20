@@ -1,16 +1,17 @@
 $(document).ready(() => {
+    console.log("document ready");
     const website = new EventRecommender();
-    website.addUser('lizandry', 'liz', '94608');
-    website.addUser('20thCentDaddy', 'joseph', '94702');
-    website.addUser('XcrusheddreamsX', 'caesar', '94720');
-    website.addUser('GhostPuncher', 'star platinum', '94604');
-    website.addUser('steelballz', 'gyro', '94602');
-    website.addEvent('00001', 'the party', new Date(2020, 06, 18), 'festival', 'San Francisco, CA', 'golden gate park', 'a real fuckin party', '20:00');
-    website.addEvent('00002', 'the blood brothers', new Date(2020, 06, 19), 'concert', 'Oakland, CA', 'The Fox', 'the blood brothers, featuring celebration', '21:00');
-    website.addEvent('00003', 'rilo kiley', new Date(2020, 06, 20), 'concert', 'Oakland, CA', 'The New Parkway', 'reunited and it feels so good', '19:00');
-    website.addEvent('00004', '...and you will know us by the trail of dead', new Date(2020, 06, 21), 'concert', 'San Francisco, CA', 'Slim\'s', 'they\'re about to rock your socks off', '21:00');
-    website.addEvent('00005', 'San Francisco Food and Wine Festival', new Date(2020, 06, 22), 'culture', 'San Francisco, CA', 'Fort Mason Center', 'come enjoy some food and wine', '12:00');
-    website.addEvent('00006', 'against me!', new Date(2020, 06, 23), 'concert', 'San Francisco, CA', 'Great American Music Hall', 'hell yeah, that\'s them. that\'s against me!!', '19:00');
+    // website.addUser('lizandry', 'liz', '94608');
+    // website.addUser('20thCentDaddy', 'joseph', '94702');
+    // website.addUser('XcrusheddreamsX', 'caesar', '94720');
+    // website.addUser('GhostPuncher', 'star platinum', '94604');
+    // website.addUser('steelballz', 'gyro', '94602');
+    // website.addEventByAttributes('00001', 'the party', new Date(2020, 06, 18), 'festival', 'San Francisco, CA', 'golden gate park', 'a real fuckin party', '20:00');
+    // website.addEventByAttributes('00002', 'the blood brothers', new Date(2020, 06, 19), 'concert', 'Oakland, CA', 'The Fox', 'the blood brothers, featuring celebration', '21:00');
+    // website.addEventByAttributes('00003', 'rilo kiley', new Date(2020, 06, 20), 'concert', 'Oakland, CA', 'The New Parkway', 'reunited and it feels so good', '19:00');
+    // website.addEventByAttributes('00004', '...and you will know us by the trail of dead', new Date(2020, 06, 21), 'concert', 'San Francisco, CA', 'Slim\'s', 'they\'re about to rock your socks off', '21:00');
+    // website.addEventByAttributes('00005', 'San Francisco Food and Wine Festival', new Date(2020, 06, 22), 'culture', 'San Francisco, CA', 'Fort Mason Center', 'come enjoy some food and wine', '12:00');
+    // website.addEventByAttributes('00006', 'against me!', new Date(2020, 06, 23), 'concert', 'San Francisco, CA', 'Great American Music Hall', 'hell yeah, that\'s them. that\'s against me!!', '19:00');
     // addEvent(id, title, date, keyword, location, venue, description, showtime)
 
     function fetchData(url) {
@@ -42,8 +43,21 @@ $(document).ready(() => {
         website.deleteUser(username);
         // console.log(website.users);
         $("form").trigger("reset");
-    });
 
+
+    });
+    $('#add-event-button').on('click', function(event) {
+        let title = $('#add-event-title')[0].value;
+        // website.addEvent({ title });
+
+        $.ajax({
+            url: '/events',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ title })
+        });
+        $("form").trigger("reset");
+    });
     //deletes event by ID number
     $('#delete-event-button').on('focus', function(event) {
         let eventID = $('#event-to-delete')[0].value;
@@ -128,12 +142,21 @@ $(document).ready(() => {
         $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
     });
     //displays all events
-    $.each(website.events, function() {
-        $('#all-events').append(`<li><class="event-title">${this.title}<br>
-    ${this.location} - ${this.venue} - ${this.date}<br>
-    ${this.description}</li>
-    `);
-    });
+
+    $.ajax({
+        url: '/events',
+        type: 'GET'
+    }).done(function(data) {
+        $.each(data, function() {
+            $('#all-events').append(`<li><class="event-title">${this.title}<br>
+                    ${this.location} - ${this.venue} - ${this.date}<br>
+                    ${this.description}</li>
+                `);
+        })
+    })
+
+    console.log(website.events);
+
     //trying to migrate this helper function to EventRecommender class
     //have to do it later, got a higher-priority thing going on
     //make it refresh itself whenever a new event is added to a user
