@@ -28,6 +28,7 @@ app.get('/event/:eventId', (req, res) => {
     //res.send(TODO);
 });
 
+//add event to database
 app.post('/events', (req, res) => {
     console.log(req.body.title);
     res.send(website.addEvent(req.body));
