@@ -2,21 +2,25 @@ class EventRecommender {
     constructor() {
         this.events = [];
         this.users = [];
+        this.TheMostUpsettingIDGeneratorInTheUniverse = 0;
     }
 
     addEvent(params) {
-        // id, title, date, keyword, location, venue, description, showtime) {
-        let x = new Event(params.id, params.title, params.date, params.keyword, params.location, params.venue, params.description, params.showtime);
+        this.TheMostUpsettingIDGeneratorInTheUniverse = this.TheMostUpsettingIDGeneratorInTheUniverse + 1;
+        let x = new Event(this.TheMostUpsettingIDGeneratorInTheUniverse, params.title, params.date, params.keyword, params.city, params.zip, params.venue, params.description, params.showtime);
         this.events.push(x);
         //add an ID generator and date objects
     }
 
-    addEventByAttributes(id, title, date, keyword, location, venue, description, showtime) {
-        let x = new Event(id, title, date, keyword, location, venue, description, showtime);
+    addEventByAttributes(id, title, date, keyword, city, zip, venue, description, showtime) {
         this.events.push(x);
         //add an ID generator and date objects
     }
-    addUser(username, title, zipcode) {
+    addUser(params) {
+        let x = new User(params.username, params.title, params.zipcode);
+        this.users.push(x);
+    }
+    addUserByAttributes(username, title, zipcode) {
         let x = new User(username, title, zipcode);
         this.users.push(x);
     }
@@ -70,7 +74,6 @@ class User {
         this.savedEvents.push(event);
     }
     deleteEvent(event) {
-
         this.savedEvents = this.savedEvents.filter(eachEvent => eachEvent.id !== event);
         //this.events = this.events.filter(event => event.id !== badEvent);
         //let userEvents = user.savedEvents.find(event => event.id === eventID);
@@ -78,32 +81,22 @@ class User {
 }
 
 class Event {
-    constructor(id, title, date, keyword, location, venue, description, showtime) {
+    constructor(id, title, date, keyword, city, zip, venue, description, showtime) {
         this.id = id;
         this.title = title;
         this.date = new Date(date);
         this.keyword = keyword;
-        this.location = location;
+        this.city = city;
+        this.zip = zip;
         this.venue = venue;
         this.description = description;
         this.showtime = showtime;
-
-        this.availableTickets = [];
         //is this necessary?
         //this.keyword = [];
 
     }
-    addAvailableTickets(seating, price) {
-        let x = new TicketType(seating, price);
-        this.availableTickets.push(x);
-    }
 }
-class TicketType {
-    constructor(seating, price) {
-        this.seating = seating;
-        this.price = price;
-    }
-}
+
 
 if (typeof module != 'undefined') {
     module.exports = { EventRecommender, User, Event }
