@@ -15,41 +15,42 @@ const website = new EventRecommender();
 
 //
 app.get('/', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 //displays events that have been added to the website
 app.get('/admin', (req, res) => {
-    console.log(website.events);
-    res.send(website.events);
+    res.post(website.events, website.users)
+        //res.write()
+    res.end()
 });
 //displays users that have been added to the website
-app.get('/admin', (req, res) => {
-    console.log(website.users);
-    res.send(website.users);
-});
 
+//if you type /admin/friendship here, it prints "friendship"
+//have this take the id of a 
 app.get('/admin/:eventId', (req, res) => {
     console.log(req.params.eventId);
-    //res.send(TODO);
+    res.send(req.params.eventId);
 });
 
 //add event to database
 app.post('/admin', (req, res) => {
     console.log(req.body.title);
     res.send(website.addEvent(req.body));
+    //res.write(website.addEvent(req.body))
+    //res.write(website.addEvent(req.body))
+    //res.end()
 });
 
 //TODO, will serve a different html file with a signup/login form
 app.get('/signup', (req, res) => {
-    //this is NOTHING, i copy+pasted it
-    console.log(req.params.eventId);
-    //res.send(TODO);
+    console.log('hello world')
 });
 
 //add new user to database
 app.post('/signup', (req, res) => {
-    console.log(req.body.title);
+    console.log("WHAT'S THIS", req.body.title);
     res.send(website.addUser(req.body));
 })
 

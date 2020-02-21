@@ -31,9 +31,14 @@ $(document).ready(() => {
     $('#add-user-button').on('click', function() {
         let username = $('#add-username')[0].value;
         let title = $('#add-title')[0].value;
+        //hardcoded for now, may do functional stuff with it later
         let zipcode = '94608';
-        website.addUser(username, title, zipcode);
-        console.log(website.users);
+        $.ajax({
+            url: '/signup',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ username, title, zipcode })
+        });
         $("form").trigger("reset");
     });
     //deletes user
@@ -70,12 +75,13 @@ $(document).ready(() => {
     //turn this into ONE button
     $('#delete-event-button').on('focus', function(event) {
         let eventID = $('#event-to-delete')[0].value;
-        $.ajax({
-            url: '/admin',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ eventID })
-        });
+        //can't do two posts i guess
+        // $.ajax({
+        //     url: '/admin',
+        //     type: 'POST',
+        //     contentType: 'application/json',
+        //     data: JSON.stringify({ eventID })
+        // });
         //website.deleteEvent(eventID);
         //console.log("this event ", eventID)
         //console.log("list of events ", website.events);
@@ -113,7 +119,7 @@ $(document).ready(() => {
         fetchData(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=rock&size=1&postalCode=94103&apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
             .then(data => {
                 let e = data._embedded.events[0];
-                $('#single-ticketmaster-event').append(`<li class='event-title'> <a href='${e.url}'>${e.name}</a>
+                $('#single-ticketmaster-event').append(`<li class='event-page'> <a href='${e.url}'>${e.name}</a>
                       </li>`);
             });
         $("form").trigger("reset");
@@ -125,14 +131,30 @@ $(document).ready(() => {
         fetchData(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&postalCode=94103&apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
             .then(data => {
                 console.log(data._embedded.events)
+                console.log()
                 data._embedded.events.map(e => {
-                    $('#all-results-by-keyword').append(`<li class='event-title'> <a href='${e.url}'>${e.name}</a>
+                    $('#all-results-by-keyword').append(`<li class='event-page' id='${e.id}'> <button>great button!</button>
                      </li>`);
+                    //trying to see how the html on this looks
+                    console.log('test', )
+                        // <a href='${e.url}'>${e.name}</a>
                 });
             })
         $("form").trigger("reset");
     });
+    //making an express call to redirect you to an event's page when you click it
+    $('.event-page').on('click', function() {
+        //let thisEvent = $(`#${id}`);
+        console.log('test', $(`#${id}`))
+            // fetchData(`https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
+            //     .then(data => {
+            //         console.log(data._embedded.events)
+            //         data._embedded.events.map(e => {
 
+        //         });
+        //     })
+        $("form").trigger("reset");
+    });
 
     //pre-API code
     // $('#find-event-by-keyword-button').on('focus', function(event) {
@@ -141,7 +163,7 @@ $(document).ready(() => {
     //     let results = website.findEventsbyKeyword(keyword)
     //     console.log('filtered results', results)
     //     results.map(e => {
-    //         $('#all-results-by-keyword').append(`<li class='event-title'> ${e.title}<br>
+    //         $('#all-results-by-keyword').append(`<li class='event-page'> ${e.title}<br>
     //         ${e.city} - ${e.venue} - ${e.date}<br>
     //     ${e.description}</li>`);
     //     });
@@ -155,20 +177,22 @@ $(document).ready(() => {
     //
     //
     //displays all users
-    $.each(website.users, function() {
-        $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
-    });
+    // $.each(website.users, function() {
+    //     $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
+    // });
+
     //displays all events
-    //this...half-works
-    //changed the way users AND events are added, breaking all of my .this code
-    //i think i can reassemble them into an object when i collect the data from their forms?
+    //works, but doesn't refresh
     $.ajax({
         url: '/admin',
-        type: 'GET'
+        type: 'POST'
     }).done(function(data) {
         $.each(data, function() {
-            console.log("is this an object?", data)
-            $('#all-events').append(`<li><class="event-title">${this.title}<br>
+            //console.log("is this an object?", data)
+
+            //i moved this in from 'display users', need to check it when the form has functionality
+            $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
+            $('#all-events').append(`<li><class="event-page">${this.title}<br>
                     ${this.city} - ${this.venue} - ${this.date}<br>
                     ${this.description}</li>
                 `);
@@ -184,10 +208,14 @@ $(document).ready(() => {
     function displayUserEvents() {
         for (user of website.users) {
             //would be hilarious, if this worked
-            let userEvents = user.savedEvents.map(e => `<li>${e.title}<br>${e.city} - ${e.date}<br>${e.description}</li>`)
+            let userEvents = user.savedEvents.map(e => `<li class='event-page' id='${e.id}'>${e.title}<br>${e.city} - ${e.date}<br>${e.description}</li>`)
             $('#my-events').append(`${user.title}'s saved events:<br>${userEvents}`)
 
         }
     }
+
+
+
+
 
 });
