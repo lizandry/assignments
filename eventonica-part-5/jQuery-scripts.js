@@ -61,7 +61,7 @@ $(document).ready(() => {
         let venue = $('#add-event-venue')[0].value;
         let showtime = $('#add-event-showtime')[0].value;
         let description = $('#add-event-description')[0].value;
-        console.log('event id', this.id)
+        //console.log('event id', this.id)
         $.ajax({
             url: '/admin',
             type: 'POST',
@@ -125,36 +125,56 @@ $(document).ready(() => {
         $("form").trigger("reset");
     });
 
+
     //keyword search that adds <li> elements under "results"
     $('#find-event-by-keyword-button').on('click', function(event) {
         let keyword = $('#keyword-search-field')[0].value;
         fetchData(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&postalCode=94103&apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
             .then(data => {
-                console.log(data._embedded.events)
-                console.log()
+                //console.log(data._embedded.events)
+
                 data._embedded.events.map(e => {
-                    $('#all-results-by-keyword').append(`<li class='event-page' id='${e.id}'> <button>great button!</button>
+                    $('#all-results-by-keyword').append(`<li> <button class='event-page' id='${e.id}'>great button!</button>
                      </li>`);
                     //trying to see how the html on this looks
-                    console.log('test', )
-                        // <a href='${e.url}'>${e.name}</a>
-                });
-            })
-        $("form").trigger("reset");
-    });
-    //making an express call to redirect you to an event's page when you click it
-    $('.event-page').on('click', function() {
-        //let thisEvent = $(`#${id}`);
-        console.log('test', $(`#${id}`))
-            // fetchData(`https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
-            //     .then(data => {
-            //         console.log(data._embedded.events)
-            //         data._embedded.events.map(e => {
+                    //console.log('test')
+                    // <a class='event-page' id='${e.id}' href='${e.url}'>${e.name}</a>
 
-        //         });
-        //     })
+                });
+                setTimeout(delayDocument, 1);
+            })
+
         $("form").trigger("reset");
     });
+
+    /*okay here's what i'm thinking:
+    this goes with the below code
+    i want to make a function that works with the '/admin/:eventId' thing in my express code
+    i'm going to make an html template that takes each event's data, when clicked,
+     and makes an "event page" in my app
+    it's a little too complex for my current level of knowledge, but i'll get there */
+    function delayDocument() {
+        let eventButtons = document.getElementsByClassName('event-page')
+        for (events of events)
+    }
+
+    function goToEventPage(eventsCollection) {
+        console.log(eventsCollection.item(0).id);
+    }
+    //
+    //making an express call to redirect you to an event's page when you click it
+    // $('.event-page').on('click', function() {
+    //     //let thisEvent = $(`#${id}`);
+    //     console.log($('.event-page'))
+    //         // fetchData(`https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
+    //         //     .then(data => {
+    //         //         console.log(data._embedded.events)
+    //         //         data._embedded.events.map(e => {
+
+    //     //         });
+    //     //     })
+    //     $("form").trigger("reset");
+    // });
 
     //pre-API code
     // $('#find-event-by-keyword-button').on('focus', function(event) {
@@ -188,8 +208,6 @@ $(document).ready(() => {
         type: 'POST'
     }).done(function(data) {
         $.each(data, function() {
-            //console.log("is this an object?", data)
-
             //i moved this in from 'display users', need to check it when the form has functionality
             $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
             $('#all-events').append(`<li><class="event-page">${this.title}<br>
