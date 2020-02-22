@@ -2,11 +2,17 @@ class EventRecommender {
     constructor() {
         this.events = [];
         this.users = [];
-        this.userEvents = {};
     }
 
-    addEvent(id, title, date, category, location, venue, description, showtime) {
-        let x = new Event(id, title, date, category, location, venue, description, showtime);
+    addEvent(params) {
+        // id, title, date, keyword, location, venue, description, showtime) {
+        let x = new Event(params.id, params.title, params.date, params.keyword, params.location, params.venue, params.description, params.showtime);
+        this.events.push(x);
+        //add an ID generator and date objects
+    }
+
+    addEventByAttributes(id, title, date, keyword, location, venue, description, showtime) {
+        let x = new Event(id, title, date, keyword, location, venue, description, showtime);
         this.events.push(x);
         //add an ID generator and date objects
     }
@@ -21,22 +27,13 @@ class EventRecommender {
         user.deleteEvent(event);
     }
 
-    //other folks were talking about using filter to delete stuff
     deleteUser(badUser) {
-        //click conditional
         //"are you sure?" prompt
-        return this.users.filter(user => user.username !== badUser)
-            //is this right?
-            // this.users.splice(badUser, 1);
-            // return this.users;
+        this.users = this.users.filter(user => user.username !== badUser)
     }
 
-    //NOT SURE IF DELETEUSER OR DELETEEVENTS IS CORRECT SYNTAX
-
-    //click conditional
-    //"warning" prompt
     deleteEvent(badEvent) {
-        //this.events.splice(badEvent, 1);
+        //"are you sure?" prompt
         this.events = this.events.filter(event => event.id !== badEvent);
     }
 
@@ -48,9 +45,12 @@ class EventRecommender {
     }
 
     //findEventsByDistance{}
-    findEventsbyCategory(userCategory) {
-        return this.events.filter(event => event.category === userCategory);
-    }
+    //pre-API
+    // findEventsbyKeyword(userKeyword) {
+    //     let filteredEvents = this.events.filter(event => event.keyword === userKeyword);
+    //     console.log('trouble here?', filteredEvents)
+    //     return filteredEvents;
+    // }
 }
 class User {
     constructor(username, title, zipcode) {
@@ -67,10 +67,7 @@ class User {
         this.zipcode = newZip;
     }
     saveEvent(event) {
-        //also changes UI
-        //  onclick,
         this.savedEvents.push(event);
-        //this seems complex
     }
     deleteEvent(event) {
 
@@ -81,18 +78,19 @@ class User {
 }
 
 class Event {
-    constructor(id, title, date, category, location, venue, description, showtime) {
+    constructor(id, title, date, keyword, location, venue, description, showtime) {
         this.id = id;
         this.title = title;
         this.date = new Date(date);
-        this.category = category;
+        this.keyword = keyword;
         this.location = location;
         this.venue = venue;
         this.description = description;
         this.showtime = showtime;
 
         this.availableTickets = [];
-        this.keywords = [];
+        //is this necessary?
+        //this.keyword = [];
 
     }
     addAvailableTickets(seating, price) {
@@ -106,11 +104,6 @@ class TicketType {
         this.price = price;
     }
 }
-
-
-
-//const ticketMaster = new EventRecommender()
-
 
 if (typeof module != 'undefined') {
     module.exports = { EventRecommender, User, Event }
