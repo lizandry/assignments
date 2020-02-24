@@ -21,8 +21,7 @@
 -migrate displayUserEvents to eventRecommender class
 -check for unique usernames
 -can't submit empty forms
-
-
+-database stuff
 
 -jenn came in and we broke my js so badly!! we changed how both events and users get made, which breaks pretty much all the code
 
