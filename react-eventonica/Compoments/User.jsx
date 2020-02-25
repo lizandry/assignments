@@ -22,22 +22,25 @@ class User {
     }
 }
 
+//this would be the result of the user that's created when you hit submit on the new user form
+let showUserInfo = (props) =>    {
+    return (
+        <div className="user">{props.username}
+        <ul className="userTraits">
+            <li id={props.id}></li>
+        </ul>
+        
+        
+        </div>
+    );
+}
+
+const lizTheUser = new User
+
 //adds user, will check for unique username eventually
     //make it yell at me for hitting submit without having enough information
     //it's storing empty users in the array
-    $('#add-user-button').on('click', function() {
-        let username = $('#add-username')[0].value;
-        let title = $('#add-title')[0].value;
-        //hardcoded for now, may do functional stuff with it later
-        let zipcode = '94608';
-        $.ajax({
-            url: '/signup',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ username, title, zipcode })
-        });
-        $("form").trigger("reset");
-    });
+    
     //deletes user
     //something's being lost between here and the function
     $('#delete-user-button').on('focus', function() {

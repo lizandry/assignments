@@ -14,6 +14,8 @@ class Event {
 
     }
 }
+
+
 $('#add-event-button').on('click', function() {
     let id = this.id
     let title = $('#add-event-title')[0].value;
