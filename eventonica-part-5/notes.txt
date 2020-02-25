@@ -21,9 +21,8 @@
 -migrate displayUserEvents to eventRecommender class
 -check for unique usernames
 -can't submit empty forms
+-database stuff
 
+-jenn came in and we broke my js so badly!! we changed how both events and users get made, which breaks pretty much all the code
 
-
--index.js
--set up express
--import eventRecommender (rewrite eventRecommender in express)
+-hook incoming ticketmaster events up to a button that you can click, which returns their ID to the js
