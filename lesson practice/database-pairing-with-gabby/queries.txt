@@ -1,0 +1,52 @@
+Creating/Updating Data
+1) Insert a new user that is joining the platform
+
+Update the database to record that a user Heart'ed a specific photo
+INSERT INTO users VALUES ("la_Q", "q@techtonica.org", "Quincey", "2020-02-15");
+
+2) Insert record that a user uploaded a photo of a given url
+INSERT INTO photos VALUES ("photoURL", "2020-02-22", 1);
+
+3) Update the database to record that a user Heart'ed a specific photo
+INSERT INTO likes VALUES (7, "2020-02-22", 4);
+
+Reading Data
+1) Find all the photos of one user (given their username)
+SELECT * FROM photos
+INNER JOIN users
+ON users.userID = photos.userID
+WHERE users.username = (queriedUsername);
+
+2) Find all the photos that one user Hearted
+SELECT * FROM likes
+LEFT JOIN users
+ON users.userID = photos.userID
+WHERE users.username = (queriedUsername);
+
+3) Find all the Hearts for a given photo (given its primary key)
+SELECT * FROM likes
+WHERE photoID = (queriedID);
+
+
+End of Requirements
+If you have completed the above, or the due date has arrived, please submit according to instructions above. If you want more challenges, please continue.
+
+BONUS
+1) Find the user with the most Hearts across all their photos
+2) Find the single most recently added photo of one user (given their username)
+SELECT * FROM photos
+INNER JOIN users
+ON users.userID = photos.userID
+ORDER BY photos.uploadDate ASC
+LIMIT 1;
+WHERE users.username = (queriedUsername);
+3) Find the photo with the most Hearts
+SELECT * FROM likes
+WHERE 
+ORDER BY photos.uploadDate ASC
+LIMIT 1;
+
+Make the database enforce that the usernames:
+4) are unique
+5) can be used in a url easily (no spaces, no URL characters - e.g. it can't contain a '?' or '/' since those having meaning in a URL)
+6) Create a way to store which users follow each other (hint: following is unidirectional)
