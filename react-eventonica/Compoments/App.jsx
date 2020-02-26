@@ -1,26 +1,30 @@
 import React from 'react';
 import './App.css';
 
-function App() {
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      // this is an object, i could do basically anything in here! refer back to index.jsx in portfolio project
+    }
+  } render()  {
   return (
       <header></header>
       <body>
     <div className="App">
     <h3>Add User</h3>
-{/* //             <form id="add-user">
-//                 <div class="input-area">
-//                     <label>username:</label>
-//                     <input type="text" class="text-field" id="add-username"></div>
-
-//                 <div class="input-area"><label>name:</label>
-//                     <input type="text" class="text-field" id="add-title"></div>
-
-//                 <!-- Add more form fields here -->
-//                 <input type="button" class="form-buttons" id='add-user-button' value="add user"> </form> */ */}
+            <form id="add-user">
+              <div class="input-area">
+       <label>username:</label>
+                 <input type="text" class="text-field" id="add-username"></div>
+             <div class="input-area"><label>name:</label>
+              <input type="text" class="text-field" id="add-title"></div>
+                <input type="button" class="form-buttons" id='add-user-button' value="add user"> </form>
     
     </div>
     </body>
   );
+}
 }
 
 export default App;

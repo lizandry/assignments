@@ -155,7 +155,7 @@ $(document).ready(() => {
     it's a little too complex for my current level of knowledge, but i'll get there */
     function delayDocument() {
         let eventButtons = document.getElementsByClassName('event-page')
-        for (events of events)
+            // for (events of events)
     }
 
     function goToEventPage(eventsCollection) {
