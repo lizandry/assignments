@@ -1,4 +1,4 @@
-class User {
+class User  {
     constructor(username, title, zipcode) {
         this.username = username;
         this.title = title;

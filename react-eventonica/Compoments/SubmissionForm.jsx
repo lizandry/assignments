@@ -10,15 +10,37 @@
 // });
 //work with properties of object passed in
 //ie user.username
-const SubmissionForm = (props) =>    {
-    return (
-<form className="submitForm">
-<field>{props.addUser()}</field>
-    <SubmitButton />
-</form>
-    );
+
+
+// const SubmissionForm = (props) =>    {
+//     return (
+// <form className="submitForm">
+// <field>{props.addUser()}</field>
+//     <SubmitButton />
+// </form>
+//     );
+// }
+// <h3>Add Event</h3>
+
+class SubmissionForm extends React.Component    {
+    constructor()   {
+        super()
+        this.state = {
+            
+        }
+    }
+    render()    {
+        return  (
+            <form className="submission-form" id={this.props.id}>
+                {/* the id thing isn't right, so i need to circle back on it. also, can i combine a jsx expression with a string? */}
+                {/* my idea is that i want to make a submission form component that populates with the correct number of fields
+                is that ANYTHING */}
+                
+
+            </form>
+        )
+    }
 }
-<h3>Add Event</h3>
 //             <form id="add-event">
 //                 <label>event name:</label>
 //                 <input type="text" class="text-field" id="add-event-title">
