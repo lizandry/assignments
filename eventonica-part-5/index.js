@@ -28,7 +28,7 @@ app.get('/admin', (req, res) => {
 //displays users that have been added to the website
 
 //if you type /admin/friendship here, it prints "friendship"
-//have this take the id of a 
+//have this take the id of an event and populate event-page.html template with other event data
 app.get('/admin/:eventId', (req, res) => {
     console.log(req.params.eventId);
     res.send(req.params.eventId);

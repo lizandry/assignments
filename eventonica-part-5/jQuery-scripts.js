@@ -16,9 +16,9 @@ $(document).ready(() => {
 
     function fetchData(url) {
         return fetch(url)
-            .then(res => res.json());
-        //.catch(error => console.log('something has gone wrong'), error)
-        //why is this 'inaccessible'?
+            .then(res => res.json())
+            //.catch(error => console.log('something has gone wrong'), error);
+            //why is this 'inaccessible'?
     }
     //
     //--------------------   
@@ -131,13 +131,14 @@ $(document).ready(() => {
         let keyword = $('#keyword-search-field')[0].value;
         fetchData(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&postalCode=94103&apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
             .then(data => {
-                //console.log(data._embedded.events)
-
+                console.log(data._embedded.events)
                 data._embedded.events.map(e => {
-                    $('#all-results-by-keyword').append(`<li> <button class='event-page' id='${e.id}'>great button!</button>
+                    $('#all-results-by-keyword').append(`<li> <a class='event-page' id='${e.id}' href='${e.url}'>${e.name}</a>
+
                      </li>`);
                     //trying to see how the html on this looks
                     //console.log('test')
+                    // button class='event-page' id='${e.id}'>great button!</button>
                     // <a class='event-page' id='${e.id}' href='${e.url}'>${e.name}</a>
 
                 });
@@ -209,7 +210,7 @@ $(document).ready(() => {
     }).done(function(data) {
         $.each(data, function() {
             //i moved this in from 'display users', need to check it when the form has functionality
-            $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
+            //  $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
             $('#all-events').append(`<li><class="event-page">${this.title}<br>
                     ${this.city} - ${this.venue} - ${this.date}<br>
                     ${this.description}</li>

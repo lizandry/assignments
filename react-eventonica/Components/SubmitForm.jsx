@@ -22,19 +22,65 @@
 // }
 // <h3>Add Event</h3>}
 
-let SubmitForm = (props) =>  {
+// props = {
+//   title = "Add User"
+//   labels: ["event name", "date", "keyword", ...]
+//   onSubmit: (username, name) => {}
+//   submitText: "add user"
+// }
+
+// state = {
+//     username: "Jennifer",
+//     name: "Jennifer Tilt",
+// }
+
+class SubmitForm extends React.Component    {
+    constructor(props) {
+        super(props);
+
+        this.state = {}
+        props.labels.forEach(label => {
+            this.state[label] = "";
+        })
+    }
+
+    render() {
         return  (
+            // TODO: make into modal
             <form className="submit-form" id={props.id}>
                 {/* the id thing isn't right, so i need to circle back on it. also, can i combine a jsx expression with a string? */}
                 {/* my idea is that i want to make a submission form component that populates with the correct number of fields
                 is that ANYTHING */}
-                
-<button className="submit-button" onClick={console.log("submitform test")}></button>
+
+                {this.props.labels.map(label => this.renderField(label))}
+                <button className="submit-button" onClick={this.props.onSubmit(this.state)}>
+                    {this.props.submitText}
+                </button>
             </form>
-        )
+        );
     }
 
-         {/*  <form id="add-event">
+    renderField(label) {
+        return (
+            <label>
+                {label}
+                <input type="text" class="text-field" value={this.state[label]} onChange={this.changeHandler(label)}></input>
+            </label>
+        );
+    }
+
+    changeHandler(label) {
+        return (event) => {
+            let newState = {};
+            newState[label] = event.target.value;
+            this.setState(newState);
+            // If things are refreshing or something is weird, try the next line
+            // event.preventDefault();
+        }
+    }
+}
+
+         /*  <form id="add-event">
                 <label>event name:</label>
                 <input type="text" class="text-field" id="add-event-title">
                 <br/>
@@ -64,4 +110,4 @@ let SubmitForm = (props) =>  {
                 <input type="text" class="text-field" id="add-event-description">
                 <br/>
                 <input type="button" class="form-buttons" id='add-event-button' value="add event"></input>
-             </form>*/}
+             </form>*/

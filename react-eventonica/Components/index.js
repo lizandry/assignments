@@ -1,4 +1,4 @@
-const { EventRecommender, User, Event } = require('./Compoments/EventRecommender.js/index.js');
+// const { EventRecommender, User, Event } = require('./Compoments/EventRecommender.jsx');
 const express = require('express');
 const path = require('path');
 const app = express()
@@ -9,9 +9,24 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 app.use(express.static(__dirname + "/"));
-const website = new EventRecommender();
+// const website = new EventRecommender();
 
 
+// JENN'S ATTEMPT TO GET REACT PULLED IN
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import App from './App';
+
+// class Root extends React.Component {
+//     render() {
+//         return ( <App/> );
+//     }
+// }
+
+// ReactDOM.render( <Root/> ,
+//     document.getElementById('root')
+// );
 
 //
 app.get('/', (req, res) => {

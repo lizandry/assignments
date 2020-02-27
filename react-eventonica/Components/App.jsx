@@ -1,30 +1,69 @@
 import React from 'react';
 import './App.css';
+import SubmitForm from "./SubmitForm";
+
+// when you get to autopopulating the events list from ticketmaster:
+// https://reactjs.org/docs/faq-ajax.html
+// you'll need this in the Tab component to get the initial data
+
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      // this is an object, i could do basically anything in here! refer back to index.jsx in portfolio project
+    render() {
+        return <SubmitForm
+            title="Add User"
+            labels={["username", "name"]}
+            buttonText="add user"
+            onSubmit={this.submitUser}
+        />;
+        return <SubmitForm
+            title="Delete User"
+            labels={["username", "name"]}
+            buttonText="add user"
+            onSubmit={this.submitUser}
+        />;
     }
-  } render()  {
-  return (
-      <header></header>
-      <body>
-    <div className="App">
-    <h3>Add User</h3>
-            <form id="add-user">
-              <div class="input-area">
-       <label>username:</label>
-                 <input type="text" class="text-field" id="add-username"></div>
-             <div class="input-area"><label>name:</label>
-              <input type="text" class="text-field" id="add-title"></div>
-                <input type="button" class="form-buttons" id='add-user-button' value="add user"> </form>
-    
-    </div>
-    </body>
-  );
-}
+
+    async submitUser(userState) {
+        const response = await fetch('/signup', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: userState.username,
+                name: userState.name
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(
+            // TODO: take you to event searches
+            () => console.log("success")
+        );
+    }
+
+//   constructor() {
+//     super();
+//     this.state = {
+//       // this is an object, i could do basically anything in here! refer back to index.jsx in portfolio project
+//     }
+//   } render()  {
+//   return (
+//     <div>
+//       <header></header>
+//       <body>
+//       <div className="App">
+//       <h3>Add User</h3>
+//               <form id="add-user">
+//                 <div class="input-area">
+//         <label>username:</label>
+//                   <input type="text" class="text-field" id="add-username"></div>
+//               <div class="input-area"><label>name:</label>
+//                 <input type="text" class="text-field" id="add-title"></div>
+//                   <input type="button" class="form-buttons" id='add-user-button' value="add user"> </form>
+      
+//       </div>
+//       </body>
+//     <input type="text" class="text-field" id="add-event-title"></input>
+//   );
+// }
 }
 
 export default App;
