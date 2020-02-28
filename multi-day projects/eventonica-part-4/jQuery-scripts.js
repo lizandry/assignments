@@ -32,8 +32,8 @@ $(document).ready(() => {
         let title = $('#add-title')[0].value;
         let zipcode = '94608';
         website.addUser(username, title, zipcode);
-        console.log(website.users);
-        $("form").trigger("reset");
+        // console.log(website.users);
+        // $("form").trigger("reset");
     });
     //deletes user
     //something's being lost between here and the function

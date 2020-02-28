@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 //displays events that have been added to the website
-app.get('/admin', (req, res) => {
+app.get('/events', (req, res) => {
     res.post(website.events, website.users)
         //res.write()
     res.end()
@@ -44,13 +44,13 @@ app.get('/admin', (req, res) => {
 
 //if you type /admin/friendship here, it prints "friendship"
 //have this take the id of a 
-app.get('/admin/:eventId', (req, res) => {
+app.get('/events/:eventId', (req, res) => {
     console.log(req.params.eventId);
     res.send(req.params.eventId);
 });
 
 //add event to database
-app.post('/admin', (req, res) => {
+app.post('/events', (req, res) => {
     console.log(req.body.title);
     res.send(website.addEvent(req.body));
     //res.write(website.addEvent(req.body))
@@ -59,12 +59,12 @@ app.post('/admin', (req, res) => {
 });
 
 //TODO, will serve a different html file with a signup/login form
-app.get('/signup', (req, res) => {
+app.get('/user', (req, res) => {
     console.log('hello world')
 });
 
 //add new user to database
-app.post('/signup', (req, res) => {
+app.post('/user', (req, res) => {
     console.log("WHAT'S THIS", req.body.title);
     res.send(website.addUser(req.body));
 })

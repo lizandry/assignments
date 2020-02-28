@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import '../index.css';
 import SubmitForm from "./SubmitForm";
 
 // when you get to autopopulating the events list from ticketmaster:
@@ -15,12 +15,12 @@ class App extends React.Component {
             buttonText="add user"
             onSubmit={this.submitUser}
         />;
-        return <SubmitForm
-            title="Delete User"
-            labels={["username", "name"]}
-            buttonText="add user"
-            onSubmit={this.submitUser}
-        />;
+        // return <SubmitForm
+        //     title="Delete User"
+        //     labels={["username", "name"]}
+        //     buttonText="add user"
+        //     onSubmit={this.submitUser}
+        // />;
     }
 
     async submitUser(userState) {

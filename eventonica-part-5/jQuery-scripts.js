@@ -125,7 +125,6 @@ $(document).ready(() => {
         $("form").trigger("reset");
     });
 
-
     //keyword search that adds <li> elements under "results"
     $('#find-event-by-keyword-button').on('click', function(event) {
         let keyword = $('#keyword-search-field')[0].value;
