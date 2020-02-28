@@ -34,7 +34,7 @@ $(document).ready(() => {
         //hardcoded for now, may do functional stuff with it later
         let zipcode = '94608';
         $.ajax({
-            url: '/signup',
+            url: '/user',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ username, title, zipcode })
@@ -45,8 +45,13 @@ $(document).ready(() => {
     //something's being lost between here and the function
     $('#delete-user-button').on('focus', function() {
         let username = $('#user-to-delete')[0].value;
-        website.deleteUser(username);
-        // console.log(website.users);
+        $.ajax({
+            url: '/deleteUser',
+            type: 'POST',
+            contentType: 'application/json',
+            //need to think this one through
+            data: JSON.stringify({ username })
+        });
         $("form").trigger("reset");
 
 
@@ -61,12 +66,10 @@ $(document).ready(() => {
         let venue = $('#add-event-venue')[0].value;
         let showtime = $('#add-event-showtime')[0].value;
         let description = $('#add-event-description')[0].value;
-        //console.log('event id', this.id)
         $.ajax({
-            url: '/admin',
+            url: '/events',
             type: 'POST',
             contentType: 'application/json',
-            //need to think this one through
             data: JSON.stringify({ id, title, date, keyword, city, zip, venue, showtime, description })
         });
         $("form").trigger("reset");
@@ -77,17 +80,14 @@ $(document).ready(() => {
         let eventID = $('#event-to-delete')[0].value;
         //can't do two posts i guess
         // $.ajax({
-        //     url: '/admin',
+        //     url: '/events',
         //     type: 'POST',
         //     contentType: 'application/json',
         //     data: JSON.stringify({ eventID })
         // });
-        //website.deleteEvent(eventID);
-        //console.log("this event ", eventID)
-        //console.log("list of events ", website.events);
         $("form").trigger("reset");
     });
-
+    //this doesn't work because displayUserEvents() was moved, and no longer works
     //adds user events
     //currently a like/unlike form. but one day it'll be a fav button
     //and i'll be able to set its state in react!
@@ -108,11 +108,11 @@ $(document).ready(() => {
         //console.log("lizandry savedEvents", website.users[0].savedEvents);
         $("form").trigger("reset");
     });
-
     //
     //--------------------   
     //search functions
     //--------------------
+    //
     //
     //returns first event from ticketmaster
     $('#return-first-ticketmaster-result-button').on('click', function(event) {
@@ -125,86 +125,38 @@ $(document).ready(() => {
         $("form").trigger("reset");
     });
 
-
-    //keyword search that adds <li> elements under "results"
+    //keyword search
     $('#find-event-by-keyword-button').on('click', function(event) {
         let keyword = $('#keyword-search-field')[0].value;
         fetchData(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&postalCode=94103&apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
             .then(data => {
-                //console.log(data._embedded.events)
-
+                // console.log("keyword search test", data._embedded.events)
                 data._embedded.events.map(e => {
-                    $('#all-results-by-keyword').append(`<li> <button class='event-page' id='${e.id}'>great button!</button>
+                    $('#all-results-by-keyword').append(`<li> <button class='event-page' id='${e.id}'>${e.name}</button>
                      </li>`);
-                    //trying to see how the html on this looks
-                    //console.log('test')
-                    // <a class='event-page' id='${e.id}' href='${e.url}'>${e.name}</a>
-
                 });
-                setTimeout(delayDocument, 1);
+                goToEventPage();
             })
-
         $("form").trigger("reset");
     });
 
-    /*okay here's what i'm thinking:
-    this goes with the below code
-    i want to make a function that works with the '/admin/:eventId' thing in my express code
-    i'm going to make an html template that takes each event's data, when clicked,
-     and makes an "event page" in my app
-    it's a little too complex for my current level of knowledge, but i'll get there */
-    function delayDocument() {
-        let eventButtons = document.getElementsByClassName('event-page')
-        for (events of events)
+    function goToEventPage(event) {
+        $('.event-page').on('click', function(event) {
+            // console.log("goToEventPage test", event.target.id)
+            // let thisEvent = ;
+            fetchData(`https://app.ticketmaster.com/discovery/v2/events/${event.target.id}.json?apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
+                .then(data => {
+                    console.log("data test", data)
+                        //data is a ticketmaster event object, i want to go to a webpage of my own design
+                })
+            $("form").trigger("reset");
+        });
     }
-
-    function goToEventPage(eventsCollection) {
-        console.log(eventsCollection.item(0).id);
-    }
-    //
-    //making an express call to redirect you to an event's page when you click it
-    // $('.event-page').on('click', function() {
-    //     //let thisEvent = $(`#${id}`);
-    //     console.log($('.event-page'))
-    //         // fetchData(`https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=QshGnRhsuNG4qHB6RKJOnr36T8qD7OWa`)
-    //         //     .then(data => {
-    //         //         console.log(data._embedded.events)
-    //         //         data._embedded.events.map(e => {
-
-    //     //         });
-    //     //     })
-    //     $("form").trigger("reset");
-    // });
-
-    //pre-API code
-    // $('#find-event-by-keyword-button').on('focus', function(event) {
-    //     let keyword = $('#keyword-search-field')[0].value;
-    //     //results is nothing
-    //     let results = website.findEventsbyKeyword(keyword)
-    //     console.log('filtered results', results)
-    //     results.map(e => {
-    //         $('#all-results-by-keyword').append(`<li class='event-page'> ${e.title}<br>
-    //         ${e.city} - ${e.venue} - ${e.date}<br>
-    //     ${e.description}</li>`);
-    //     });
-    //     $("form").trigger("reset");
-    // });
-    //
-    //--------------------   
-    //display functions
-    //these all could stand to refresh whenever new info is added
-    //--------------------
-    //
-    //
-    //displays all users
-    // $.each(website.users, function() {
-    //     $('#all-users').append(`<li>${this.username} - ${this.title}</li>`);
-    // });
 
     //displays all events
     //works, but doesn't refresh
     $.ajax({
-        url: '/admin',
+        url: '/events',
         type: 'POST'
     }).done(function(data) {
         $.each(data, function() {
@@ -216,24 +168,4 @@ $(document).ready(() => {
                 `);
         })
     })
-
-    //console.log(website.events);
-
-    //trying to migrate this helper function to EventRecommender class
-    //have to do it later, got a higher-priority thing going on
-    //make it refresh itself whenever a new event is added to a user
-    //i'm thinking: make a special div per user, this function initializes by clearing the innerHTML
-    function displayUserEvents() {
-        for (user of website.users) {
-            //would be hilarious, if this worked
-            let userEvents = user.savedEvents.map(e => `<li class='event-page' id='${e.id}'>${e.title}<br>${e.city} - ${e.date}<br>${e.description}</li>`)
-            $('#my-events').append(`${user.title}'s saved events:<br>${userEvents}`)
-
-        }
-    }
-
-
-
-
-
 });

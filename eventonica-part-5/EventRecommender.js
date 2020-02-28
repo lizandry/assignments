@@ -49,12 +49,17 @@ class EventRecommender {
     }
 
     //findEventsByDistance{}
-    //pre-API
-    // findEventsbyKeyword(userKeyword) {
-    //     let filteredEvents = this.events.filter(event => event.keyword === userKeyword);
-    //     console.log('trouble here?', filteredEvents)
-    //     return filteredEvents;
-    // }
+
+    //doesn't work now, when it was in jquery it worked as "user of website.users"
+    //make it refresh itself whenever a new event is added to a user
+    //i'm thinking: make a special div per user, this function initializes by clearing the innerHTML
+    displayUserEvents() {
+        for (user of this.users) {
+            let userEvents = user.savedEvents.map(e => `<li class='event-page' id='${e.id}'>${e.title}<br>${e.city} - ${e.date}<br>${e.description}</li>`)
+            $('#my-events').append(`${user.title}'s saved events:<br>${userEvents}`)
+
+        }
+    }
 }
 class User {
     constructor(username, title, zipcode) {

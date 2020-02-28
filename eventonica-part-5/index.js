@@ -11,59 +11,52 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + "/"));
 const website = new EventRecommender();
 
-
-
-//
+//WORKS
 app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'text/html');
     res.sendFile(path.join(__dirname + '/index.html'));
 });
-
-//displays events that have been added to the website
-app.get('/admin', (req, res) => {
-    res.post(website.events, website.users)
-        //res.write()
-    res.end()
+//WORKS
+app.get('/events', (req, res) => {
+    console.log("/events get test", website.events)
+    res.status(200).send(website.events)
 });
-//displays users that have been added to the website
-
-//if you type /admin/friendship here, it prints "friendship"
-//have this take the id of a 
-app.get('/admin/:eventId', (req, res) => {
-    console.log(req.params.eventId);
-    res.send(req.params.eventId);
+//WORKS
+app.get('/events/:eventId', (req, res) => {
+    console.log("/eventId get test", req.params.eventId);
+    res.status(200).send(req.params.eventId);
 });
-
+//WORKS
 //add event to database
-app.post('/admin', (req, res) => {
-    console.log(req.body.title);
-    res.send(website.addEvent(req.body));
-    //res.write(website.addEvent(req.body))
-    //res.write(website.addEvent(req.body))
-    //res.end()
+app.post('/events', (req, res) => {
+    console.log("/events post test", req.body);
+    res.status(200).send(website.addEvent(req.body));
 });
-
-//TODO, will serve a different html file with a signup/login form
-app.get('/signup', (req, res) => {
-    console.log('hello world')
+//WORKS
+app.get('/user', (req, res) => {
+    res.status(200).send("user page")
 });
-
+//DOESN'T WORK
 //add new user to database
-app.post('/signup', (req, res) => {
-    console.log("WHAT'S THIS", req.body.title);
-    res.send(website.addUser(req.body));
-})
-
-//gotta look up how to incorporate my 'like' button functionality into this
-app.get('/account', (req, res) => {
-    //get granular with this one
-    console.log(website.users);
-    res.send(website.events);
+app.post('/user', (req, res) => {
+    res.status(200).send(website.addUser())
 });
-app.post('/account', (req, res) => {
-    console.log(req.body.title);
-    res.send(website.addEvent(req.body));
-})
+//DOESN'T WORK
+app.get('/deleteUser', (req, res) => {
+    res.status(200).send(website.deleteUser(req.body))
+});
+// WORKS
+//gotta look up how to incorporate my 'like' button functionality into this
+app.get('/addEvent', (req, res) => {
+    //get granular with this one
+    console.log("/account get test", website.users);
+    res.status(200).send(website.events);
+});
+//DOESN'T WORK
+app.post('/addEvent', (req, res) => {
+    console.log("/account post test", req.body.title);
+    res.status(200).send(website.addEvent(req.body));
+});
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
