@@ -25,7 +25,7 @@ class EventRecommender {
         db.one('INSERT INTO users(username, title) VALUES($1, $2) RETURNING id, username, title', [params.username, params.title])
             .then(data => {
                 console.log("data.id", data.id); // print new user id;
-                // res.sendStatus(500).send(data);
+                res.sendStatus(500).send(data);
             })
             .catch(error => {
                 console.log('ERROR:', error); // print error;
