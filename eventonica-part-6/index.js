@@ -2,8 +2,7 @@ const { EventRecommender, User, Event } = require('./EventRecommender.js');
 const express = require('express');
 const path = require('path');
 const pgp = require('pg-promise')
-    // const db = pgp('postgres://liz@localhost:5432/eventonica')
-const db = pgp('postgres://example@localhost:5432/eventonica')
+const db = pgp('postgres://liz@localhost:5432/eventonica')
 const app = express()
 const port = 3000
 
