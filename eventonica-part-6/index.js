@@ -1,8 +1,6 @@
 const { EventRecommender, User, Event } = require('./EventRecommender.js');
 const express = require('express');
 const path = require('path');
-const pgp = require('pg-promise')
-const db = pgp('postgres://liz@localhost:5432/eventonica')
 const app = express()
 const port = 3000
 
@@ -13,18 +11,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(express.static(__dirname + "/"));
 const website = new EventRecommender();
-
-// db.one('SELECT $1 FROM $2', [id, users])
-
-// db.one('INSERT INTO users (name) values ($1) RETURNING id, name', [req.body.name])
-// .then(data => {
-//     # on success, return the user data
-//     res.send(data)
-// })
-// .catch(function(error) {
-//     # on failure, send a generic 500 status
-//     res.sendStatus(500)
-// });
 
 
 //WORKS
@@ -40,7 +26,7 @@ app.get('/events', (req, res) => {
 //WORKS
 app.get('/events/:eventId', (req, res) => {
     console.log("/eventId get test", req.params.eventId);
-    res.status(200).send(req.params.eventId);
+    // res.status(200).send(req.params.eventId);
 });
 //WORKS
 //add event to database
@@ -50,11 +36,15 @@ app.post('/events', (req, res) => {
 });
 //WORKS
 app.get('/user', (req, res) => {
-    res.status(200).send("user page")
+    website.getAllUsers().then(data => {
+        console.log("/user get test", data);
+        res.status(200).send(`the first user in this array is ${data[0].username}, who responds to the name ${data[0].title}`);
+    })
 });
 //DOESN'T WORK
 //add new user to database
 app.post('/user', (req, res) => {
+
     res.status(200).send(website.addUser(req.body))
 });
 //DOESN'T WORK

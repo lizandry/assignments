@@ -1,11 +1,22 @@
-// const pgp = require('pg-promise')
-// const db = pgp('postgres://liz@localhost:5432/eventonica')
+const pgp = require('pg-promise')()
+const db = pgp('postgres://postgres@localhost:5432/eventonica')
 
 class EventRecommender {
     constructor() {
         this.events = [];
         this.users = [];
         this.TheMostUpsettingIDGeneratorInTheUniverse = 0;
+    }
+
+    getAllUsers() {
+        return db.any('SELECT * FROM users')
+            .then(data => {
+                console.log("inside getAllUsers function", data); // print new user id;
+                return data;
+            })
+            .catch(error => {
+                console.log('ERROR:', error); // print error;
+            });
     }
 
     addEvent(params) {
