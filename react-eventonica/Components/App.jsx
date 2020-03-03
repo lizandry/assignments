@@ -1,20 +1,31 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import '../index.css';
 import SubmitForm from "./SubmitForm";
 
 // when you get to autopopulating the events list from ticketmaster:
 // https://reactjs.org/docs/faq-ajax.html
 // you'll need this in the Tab component to get the initial data
+class Root extends React.Component {
+    render() {
+        return ( <App/> );
+    }
+}
 
+ReactDOM.render( <Root/> ,
+    document.getElementById('root')
+);
 
 class App extends React.Component {
     render() {
-        return <SubmitForm
+        return <div>
+            <p>hello world</p>
+        <SubmitForm
             title="Add User"
             labels={["username", "name"]}
             buttonText="add user"
             onSubmit={this.submitUser}
-        />;
+        />;</div>
         // return <SubmitForm
         //     title="Delete User"
         //     labels={["username", "name"]}
