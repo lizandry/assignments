@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #15202b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#select-user {
+    size: 10vh;
+    padding:2vh;
+    margin:2vh;  
+}
+/* #message-label {
+    padding:2vh;
+    margin:2vh;
+} */
+#type-a-message {
+    padding:2vh;
+    margin:2vh;
+}
+
+.submit-form {
+    text-align: left;
+    height:40vh;
+    background-color:#15202b;
+    color:#3aa2f2;
+
+}
+.submit-button {
+    height:10vh;
+    width: 40vh;
+    font-family: Ubuntu, regular;
+    font-size: 3vh;
+    color: white;
+    background-color:#3aa2f2;
+    border-radius: 1vh;
+}
