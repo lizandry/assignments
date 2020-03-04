@@ -1,69 +1,21 @@
 import React from 'react';
 import './index.css';
-import SubmitForm from "./Components/SubmitForm";
-import ItemList from "./Components/ItemLists";
+// import SubmitForm from "./Components/SubmitForm";
+// import ItemList from "./Components/ItemLists";
 // const React = require("react");
 // const myCSS = require("./index.css")
 // const SubmitForm = require("./SubmitForm")
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 class App extends React.Component {
     render() {
         return <div>
           
           <h3>All Users</h3>
+          
 {/* list element goes here */}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ItemList
+{/* <ItemList
 
 />
 
@@ -73,7 +25,7 @@ class App extends React.Component {
             labels={["username", "name"]}
             buttonText="add user"
             onSubmit={this.submitUser}
-        />;
+        />; */}
         </div>
         // return <SubmitForm
         //     title="Delete User"
@@ -99,8 +51,85 @@ class App extends React.Component {
     //     );
     // }
 }    
-// if (typeof module != 'undefined') {
-//     module.exports = { App }
-// };
+
+class userSubmit extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+
+        }
+    }
+
+    render() {
+        return  (
+            <form className="submit-form" >
+                <label id="user-label"> {`log in, user!`}
+                <select id="select-user">
+                    <option>lizandry</option>
+                    <option>betterzepp</option>
+                    <option>xSteelBallx</option>
+                    <option>20thCentDad</option>
+                    <option>pUnChGhOsT</option>
+                </select>
+                </label>
+                <p></p>
+                <label id="message-label">
+                    {`enter bad thoughts below`}
+                    <br/>
+                    <textarea className="empty-text-box" id="type-a-message">
+                    </textarea>
+                </label>
+                <p></p>
+                <button className="submit-button">
+                    {`give bad thoughts to world`}
+                </button>
+            </form> 
+        );
+    }
+    
+//trying to take value of #type-a-message
+    submitForm(body)    {
+        console.log("did the text get submitted?")
+        return(event) =>    {
+            console.log("does it submit?")
+            event.preventDefault();
+            let newState = {};
+            //have to think about how to access the inner elements of the form
+            //it wouldn't be body.id, that's nothing
+            newState[body] = event.target.value;
+            this.setState(newState);
+        }
+
+    }
+
+}
+
+// const list = [
+//     {
+//       id: 'a',
+//       firstname: 'Robin',
+//       lastname: 'Wieruch',
+//       year: 1988,
+//     },
+//     {
+//       id: 'b',
+//       firstname: 'Dave',
+//       lastname: 'Davidds',
+//       year: 1990,
+//     },
+//   ];
+//   const ItemList = () => (
+//     <ul>
+//       {list.map(item => (
+//         <li key={item.id}>
+//           <div>{item.id}</div>
+//           <div>{item.firstname}</div>
+//           <div>{item.lastname}</div>
+//           <div>{item.year}</div>
+//         </li>
+//       ))}
+//     </ul>
+//   );
 export default App;
 

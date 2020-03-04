@@ -44,7 +44,7 @@ class ItemList extends React.Component {
                         subtitle={item.subtitle}
                         onClick={this.props.onClick}
                         onDelete={this.props.onDelete}
-                        
+
                     />
                 )}
                 {modal}
@@ -68,3 +68,4 @@ console.log("help")
 //     onAdd: () => { // ajax call }
 //     addProps: { // object containing the props of SubmitForm}
 // }
+export default ItemList;

@@ -20,7 +20,7 @@
 //     name: "Jennifer Tilt",
 // }
 import React from 'react';
-export default class SubmitForm extends React.Component    {
+ class SubmitForm extends React.Component    {
     constructor(props) {
         super(props);
 
@@ -61,3 +61,4 @@ export default class SubmitForm extends React.Component    {
         }
     }
 }
+export default SubmitForm;
