@@ -6,15 +6,15 @@ import SubmitForm from "./SubmitForm";
 // when you get to autopopulating the events list from ticketmaster:
 // https://reactjs.org/docs/faq-ajax.html
 // you'll need this in the Tab component to get the initial data
-class Root extends React.Component {
-    render() {
-        return ( <App/> );
-    }
-}
+// class Root extends React.Component {
+//     render() {
+//         return ( <App/> );
+//     }
+// }
 
-ReactDOM.render( <Root/> ,
-    document.getElementById('root')
-);
+// ReactDOM.render( <Root/> ,
+//     document.getElementById('root')
+// );
 
 
 class App extends React.Component {

@@ -1,0 +1,17 @@
+-align event creation with ticketmaster's object keys/use event ids
+-hide 'results' until results are summoned
+-update UI when new users and events are added
+-fix how events display after being added to a user
+-eventually this will display by user
+-refresh results instead of adding a new body with near-identical info
+-will probably want to consider how both city and zipcode can be used
+-add in "are you sure?" prompts for deleting info
+-more api searches
+-comprehensive labels to navigate my code by
+-take some time to neaten up quotes and standardize tagging
+-on 'focus' is better for accessibility, but makes the button click again when you navigate back to the page
+-check for unique usernames
+-can't submit empty forms
+-database stuff
+
+-hook incoming ticketmaster events up to a button that you can click, which returns their ID to the js
