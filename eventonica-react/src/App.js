@@ -10,7 +10,8 @@ class App extends React.Component {
     render() {
         return <div>
           
-          <h3>All Users</h3>
+          <h3>make an account</h3>
+          <UserSubmit />
           
 {/* list element goes here */}
 
@@ -52,52 +53,86 @@ class App extends React.Component {
     // }
 }    
 
-class userSubmit extends React.Component {
+// let UserSubmit = (event) => {
+//     const [username, setUsername] = useState("");
+//     const [title, setTitle] = useState("")
+//         return  (
+//             <form className="user-submit-form" >
+//             <label id="username-label">
+//                 {`choose a username`}
+//                 <input type="text" value="" name="" onChange={() => setUsername(username.concat())} className="empty-text-field" id="username-input">
+//                 </input>
+//             </label>
+//             {/* <label id="title-label"> 
+//                 {`what should we call you`}
+//                 <input type="text" value={this.state.username} onChange={this.handleChange} className="empty-text-field" id="title-input">
+//                 </input>
+//             </label> */}
+//             <p></p>
+//             <button className="submit-button">
+//                 {`create my account`}
+//             </button>
+//         </form> 
+//         );
+//     }
+    
+
+class UserSubmit extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
+            visible: true,
+            username: "",
+            title: ""
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    handleChange(event) {
+        this.setState({username: event.target.value,
+        title: event.target.value},)
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+       console.log(`welcome, ${this.state.username}`)
+    }
     render() {
         return  (
             <form className="submit-form" >
-                <label id="user-label"> {`log in, user!`}
-                <select id="select-user">
-                    <option>lizandry</option>
-                    <option>betterzepp</option>
-                    <option>xSteelBallx</option>
-                    <option>20thCentDad</option>
-                    <option>pUnChGhOsT</option>
-                </select>
-                </label>
-                <p></p>
-                <label id="message-label">
-                    {`enter bad thoughts below`}
-                    <br/>
-                    <textarea className="empty-text-box" id="type-a-message">
-                    </textarea>
-                </label>
-                <p></p>
-                <button className="submit-button">
-                    {`give bad thoughts to world`}
-                </button>
-            </form> 
+            
+            <label className="submitform-labels">
+                {`choose a username`}
+            </label>
+                <input type="text" name={this.state.username} value={this.state.value} onChange={this.handleChange} className="empty-text-field" id="username-input">
+                </input>
+            
+            <p></p>
+            <label className="submitform-labels">
+                {`what should we call you?`}
+            </label>
+                <input type="text" value={this.state.value} name={this.state.title} onChange={this.handleChange} className="empty-text-field" id="title-input">
+                </input>
+            
+            <p></p>
+            <input type="submit"  className="submit-button" value={`create account`} onClick={this.handleSubmit} /> 
+                
+
+        </form> 
         );
     }
     
 //trying to take value of #type-a-message
-    submitForm(body)    {
+    submitForm(props)    {
         console.log("did the text get submitted?")
+
         return(event) =>    {
-            console.log("does it submit?")
+            console.log("does it submit?", event.target.value)
             event.preventDefault();
             let newState = {};
             //have to think about how to access the inner elements of the form
             //it wouldn't be body.id, that's nothing
-            newState[body] = event.target.value;
+            newState[props] = event.target.value;
             this.setState(newState);
         }
 

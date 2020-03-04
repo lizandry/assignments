@@ -15,9 +15,15 @@ body {
     padding-top: 20vh;
     width: 40%;
 }
-
+.submitform-labels  {
+    background: rgba(245, 245, 245, 0.8);
+    border-radius: 1vh;
+}
+.empty-text-field {
+    border-radius: 1vh;
+}
 form {
-    width: 70vh;
+    width: 80vh;
     font-size: 3vh;
     line-height: 6vh;
     text-align: left;
