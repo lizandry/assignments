@@ -28,6 +28,8 @@ import React from 'react';
         props.labels.forEach(label => {
             this.state[label] = "";
         })
+        this.renderField = this.renderField.bind(this);
+        this.changeHandler = this.changeHandler.bind(this);
     }
 
     render() {

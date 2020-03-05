@@ -1,5 +1,9 @@
 const pgp = require('pg-promise')()
+// import 'pg-promise'
 const db = pgp('postgres://postgres@localhost:5432/eventonica')
+// import pgp from 'pg-promise';
+// import db from pgp('postgres://postgres@localhost:5432/eventonica')
+
 
 class EventRecommender {
     constructor() {
@@ -130,7 +134,6 @@ class Event {
 
     }
 }
-
 
 if (typeof module != 'undefined') {
     module.exports = { EventRecommender, User, Event }

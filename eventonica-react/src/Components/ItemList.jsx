@@ -9,6 +9,9 @@ class ItemList extends React.Component {
         this.state = {
             modalOpen: false,
         }
+        this.openAddModal = this.openAddModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.modal = this.modal.bind(this);
     }
 
     openAddModal() {
@@ -43,6 +46,7 @@ class ItemList extends React.Component {
                         title={item.title}
                         subtitle={item.subtitle}
                         onClick={this.props.onClick}
+                        onAdd={this.props.onAdd}
                         onDelete={this.props.onDelete}
 
                     />
@@ -50,9 +54,6 @@ class ItemList extends React.Component {
                 {modal}
             </div>
         );
-    }
-    addProps() {
-console.log("help")
     }
 }
 // ItemListProps = {

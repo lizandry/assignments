@@ -1,44 +1,24 @@
-const { EventRecommender, User, Event } = require('./EventRecommender.js');
-const express = require('express');
+import { EventRecommender, User, Event } from './EventRecommender.js';
+// const express = require('express');
 const path = require('path');
-const app = express();
-const router = express()();
-const middleware = require('react-express-middleware');
+// const app = express();
 const port = 3000;
+
+import express from "express";
+import compression from "compression";
+import ssr from "./routes/ssr";
+const app = express();
 app.use(express.json());
-// const bodyParser = require('body-parser')
-// app.use(bodyParser.urlencoded({
-//     extended: true
-// }))
-// app.use(bodyParser.json())
-module.exports = function routes (router) {
-	// Isomorphic react render middleware
-	router.use(middleware());
+app.use(compression());
+// app.use(express.static("public"));
 
-	router.get('/', require('./index.js'));
-// 	router.get('/foo', require('./handlers/foo.jsx'));
-// 	router.get('/bar', require('./handlers/bar.jsx'));
-};
-
-// router.use(middleware({
-//     element: document.getElementById('app'), // The element on the front-end to render into, can be a selector (string) or function
-//     renderMethod: ReactDOM.render, // or ReactDOMServer.renderToString on the server
-//     template: 'index',  // template passed to express' render
-//     key: 'content'
-//   }));
-
-//   router.get('/', function (req, res) {
-    
-//     );
-   
-//     res.renderReactComponent(RenderComponent);
-//   });
+app.use("/firstssr", ssr);
 
 
-// app.use(express.static(path.join(__dirname + "/")));
-// const website = new EventRecommender();
+app.use(express.static(path.join(__dirname + "/")));
+const website = new EventRecommender();
 
-// app.set(path.join(__dirname + 'App.js'));
+app.set(path.join(__dirname + 'App.js'));
 
 // //
 // //something's working. not the right thing tho
