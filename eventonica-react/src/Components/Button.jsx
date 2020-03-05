@@ -4,4 +4,4 @@ const Button = (props) =>    {
     console.log("circle back")
 }
 
-export Button;
+export default Button;
