@@ -1,6 +1,6 @@
 // const SubmissionForm = (props) =>    {
 //     return (
-// <form className="submitForm">
+// <form className='submitForm'>
 // <field>{props.addUser()}</field>
 //     <SubmitButton />
 // </form>
@@ -9,15 +9,15 @@
 // <h3>Add Event</h3>}
 
 // props = {
-//   title = "Add User"
-//   labels: ["event name", "date", "keyword", ...]
+//   title = 'Add User'
+//   labels: ['event name', 'date', 'keyword', ...]
 //   onSubmit: (username, name) => {}
-//   submitText: "add user"
+//   submitText: 'add user'
 // }
 
 // state = {
-//     username: "Jennifer",
-//     name: "Jennifer Tilt",
+//     username: 'Jennifer',
+//     name: 'Jennifer Tilt',
 // }
 import React from 'react';
  class SubmitForm extends React.Component    {
@@ -26,7 +26,7 @@ import React from 'react';
 
         this.state = {}
         props.labels.forEach(label => {
-            this.state[label] = "";
+            this.state[label] = '';
         })
         this.renderField = this.renderField.bind(this);
         this.changeHandler = this.changeHandler.bind(this);
@@ -35,9 +35,9 @@ import React from 'react';
     render() {
         return  (
             // TODO: make into modal
-            <form className="submit-form" id={props.id}>
+            <form className='submit-form' id={props.id}>
                 {this.props.labels.map(label => this.renderField(label))}
-                <button className="submit-button" onClick={this.props.onSubmit(this.state)}>
+                <button className='submit-button' onClick={this.props.onSubmit(this.state)}>
                     {this.props.submitText}
                 </button>
             </form>
@@ -48,7 +48,7 @@ import React from 'react';
         return (
             <label>
                 {label}
-                <input type="text" class="text-field" value={this.state[label]} onChange={this.changeHandler(label)}></input>
+                <input type='text' class='text-field' value={this.state[label]} onChange={this.changeHandler(label)}></input>
             </label>
         );
     }

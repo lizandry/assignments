@@ -1,6 +1,6 @@
 import React from 'react';
-import SubmitForm from "./SubmitForm";
-import ItemRow from "./ItemRow";
+import SubmitForm from './SubmitForm';
+import ItemRow from './ItemRow';
 
 class ItemList extends React.Component {
     constructor(props) {
@@ -58,11 +58,11 @@ class ItemList extends React.Component {
 }
 // ItemListProps = {
 //     items: [{
-//         title: "Dance Party",
-//         subtitle: "3/4/20",
+//         title: 'Dance Party',
+//         subtitle: '3/4/20',
 //     }, {
-//         title: "Other Party",
-//         subtitle: "3/4/20",
+//         title: 'Other Party',
+//         subtitle: '3/4/20',
 //     }],
 //     onClick: (id) => { // open event page }
 //     onDelete: (id) => { // ajax call }

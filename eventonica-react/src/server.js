@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(compression());
 // app.use(express.static("public"));
 
-app.use("/firstssr", ssr);
+app.use('/firstssr', ssr);
 
 
-app.use(express.static(path.join(__dirname + "/")));
+app.use(express.static(path.join(__dirname + '/')));
 const website = new EventRecommender();
 
 app.set(path.join(__dirname + 'App.js'));
@@ -26,11 +26,11 @@ app.set(path.join(__dirname + 'App.js'));
 //     console.log("work?")
 //     // res.setHeader('Content-Type', 'text/html');
 //     res.render()
-    // res.sendFile(path.join(__dirname + 'index.js'));
+// res.sendFile(path.join(__dirname + 'index.js'));
 // });
 // //WORKS
 app.get('/events', (req, res) => {
-    console.log("/events get test", website.events)
+    console.log('/events get test', website.events)
     res.status(200).send(website.events)
 });
 // //WORKS
