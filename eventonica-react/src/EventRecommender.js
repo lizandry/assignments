@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')()
 // import 'pg-promise'
-const db = pgp('postgres://postgres@localhost:5432/eventonica')
+const db = pgp('postgres://postgres@localhost:5432/eventonica');
 // import pgp from 'pg-promise';
 // import db from pgp('postgres://postgres@localhost:5432/eventonica')
 
@@ -15,7 +15,7 @@ class EventRecommender {
     getAllUsers() {
         return db.any('SELECT * FROM users')
             .then(data => {
-                console.log("inside getAllUsers function", data); // print new user id;
+                console.log('inside getAllUsers function', data); // print new user id;
                 return data;
             })
             .catch(error => {
@@ -30,17 +30,13 @@ class EventRecommender {
         //add an ID generator and date objects
     }
 
-    addEventByAttributes(id, title, date, keyword, city, zip, venue, description, showtime) {
-        this.events.push(x);
-        //add an ID generator and date objects
-    }
     addUser(params) {
         // let x = new User(params.username, params.title);
         // this.users.push(x);
         db.one('INSERT INTO users(username, title) VALUES($1, $2) RETURNING id, username, title', [params.username, params.title])
             .then(data => {
-                console.log("data.id", data.id); // print new user id;
-                res.sendStatus(500).send(data);
+                console.log(`user ${data.id} added to database`); // print new user id;
+                // res.sendStatus(200).send(data);
             })
             .catch(error => {
                 console.log('ERROR:', error); // print error;
@@ -57,24 +53,19 @@ class EventRecommender {
         //         console.log('ERROR:', error)
         //     });
     }
-    addUserByAttributes(username, title) {
-        let x = new User(username, title);
-        this.users.push(x);
-    }
     saveUserEvent(user, event) {
         user.saveEvent(event);
     }
     deleteUserEvent(user, event) {
         user.deleteEvent(event);
     }
-
     deleteUser(badUser) {
-        //"are you sure?" prompt
+        //'are you sure?' prompt
         this.users = this.users.filter(user => user.username !== badUser)
     }
 
     deleteEvent(badEvent) {
-        //"are you sure?" prompt
+        //'are you sure?' prompt
         this.events = this.events.filter(event => event.id !== badEvent);
     }
 
@@ -87,13 +78,13 @@ class EventRecommender {
 
     //findEventsByDistance{}
 
-    //doesn't work now, when it was in jquery it worked as "user of website.users"
+    //doesn't work now, when it was in jquery it worked as 'user of website.users'
     //make it refresh itself whenever a new event is added to a user
     //i'm thinking: make a special div per user, this function initializes by clearing the innerHTML
     displayUserEvents() {
         for (user of this.users) {
-            let userEvents = user.savedEvents.map(e => `<li class='event-page' id='${e.id}'>${e.title}<br>${e.city} - ${e.date}<br>${e.description}</li>`)
-            $('#my-events').append(`${user.title}'s saved events:<br>${userEvents}`)
+            let userEvents = user.savedEvents.map(e => `<li class='event-page' id='${e.id}'>${e.title}<br>${e.city} - ${e.date}<br>${e.description}</li>`);
+            $('#my-events').append(`${user.title}'s saved events:<br>${userEvents}`);
 
         }
     }
