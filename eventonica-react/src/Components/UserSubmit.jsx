@@ -32,10 +32,13 @@ class UserSubmit extends React.Component {
             headers: {
               'Content-type': 'application/json; charset=UTF-8'
             }
-        }).then(
-            // TODO: take you to event searches
+        })
+        .then(
             () => console.log('success')
+        )
+        .catch(error => console.log(error)
         );
+  
     }
     
     render() {

@@ -1,23 +1,24 @@
 import React from 'react';
-// import SubmitForm from "./SubmitForm";
-// import ItemList from "./ItemList";
+import DeleteButton from './DeleteButton';
+// import SubmitForm from './SubmitForm';
+// import ItemList from './ItemList';
 
 // props = {
-//     title: "Dance Party",
-//     subtitle: "3/4/20",
+//     title: 'Dance Party',
+//     subtitle: '3/4/20',
 //     onClick: (id) => { // open event page }
 //     onDelete: (id) => { // ajax call }
-// onAdd: () => { "ajax call" }
+// onAdd: () => { 'ajax call' }
 //             addProps: { // object containing the props of SubmitForm}
 // }
 class ItemRow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // title: "",
-            // subtitle: "",
+            // title: '',
+            // subtitle: '',
             // props: {}
-        }
+        };
 }
 
     render() {
@@ -30,18 +31,18 @@ class ItemRow extends React.Component {
     }
 
     onClick(props) {
-        console.log("id => {open event page}")
+        console.log('id => {open event page}')
     }
     onAdd() {
-        console.log("ajax call")
+        console.log('ajax call')
     }
 
     onDelete(props) {
-        console.log("id => {ajax call}")
+        console.log('id => {ajax call}')
     }
     addProps(props) {
     props.labels.forEach(label => {
-        this.setState[label] = "";
+        this.setState[label] = '';
     })
 }
 }
@@ -54,8 +55,8 @@ class ItemRow extends React.Component {
 //     constructor(props) {
 //         super(props);
 //         this.state = {
-//             title: "",
-//             subtitle: "",
+//             title: '',
+//             subtitle: '',
 //         }
 //     }
 

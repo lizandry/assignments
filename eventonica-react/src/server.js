@@ -1,30 +1,16 @@
 import { EventRecommender, User, Event } from './EventRecommender.js';
-// import React from 'react';
-// import {default as reactApp} from './App.js';
-// const ReactDOMServer = require('react-dom/server');
-// const MyCom = require('./Components'); 
-// var domString = ReactDOMServer.renderToString(<MyCom />);
-
-// const express = require('express');
-const path = require('path');
-// const app = express();
+import path from 'path';
 const port = 3000;
-
 import express from 'express';
 import compression from 'compression';
-import ssr from './routes/ssr';
 const app = express();
 app.use(express.json());
 app.use(compression());
-// app.use(express.static('public'));
-
-app.use('/firstssr', ssr);
 
 
 app.use(express.static(path.join(__dirname + '/')));
-const website = new EventRecommender();
-
 app.set(path.join(__dirname + 'App.js'));
+const website = new EventRecommender();
 
 // //
 // //something's working. not the right thing tho
@@ -40,36 +26,35 @@ app.get('/events', (req, res) => {
     console.log('/events get test', website.events);
     res.status(200).send(website.events);
 });
-// //WORKS
+//CURRENTLY GETTING THIS TO REDIRECT TO A BESPOKE EVENTS PAGE
 app.get('/events/:eventId', (req, res) => {
     console.log('/eventId get test', req.params.eventId);
     res.status(200).send(req.params.eventId);
 });
+// NO LONGER NECESSARY
+// app.post('/events', (req, res) => {
+//     console.log('/events post test', req.body);
+//     res.status(200).send(website.addEvent(res.body));
+// });
 // //WORKS
-// //add event to database
-app.post('/events', (req, res) => {
-    console.log('/events post test', req.body);
-    res.status(200).send(website.addEvent(res.body));
-});
-// //WORKS
-app.get('/user', (req, res) => {
+app.get('/express_backend', (req, res) => {
     
+    res.send(JSON.stringify({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }));
+  });
+app.get('/user', (req, res) => {
     website.getAllUsers().then(data => {
-        // console.log('domString', domString);
-        console.log('req test', req.query);
-        console.log('/user get test', data);
         res.status(200).send(`the first user in this array is ${data[0].username}, who responds to the name ${data[0].title}`);
-    })
+    });
 });
 // //DOESN'T WORK
 // //add new user to database
 app.post('/user', (req, res) => {
-    console.log('/user post test', req.body);
-    res.status(200).send(website.addUser(req.body))
+    // console.log('/user post test', req.body); //-> user object
+    res.status(200).send(website.addUser(req.body));
 });
-// //DOESN'T WORK
-app.get('/deleteUser', (req, res) => {
-    res.status(200).send(website.deleteUser(req.body))
+// make delete button next
+app.delete('/user', (req, res) => {
+    res.status(200).send(website.deleteUser(req.body));
 });
 // // WORKS
 // //gotta look up how to incorporate my 'like' button functionality into this
