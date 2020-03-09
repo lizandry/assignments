@@ -59,9 +59,15 @@ class EventRecommender {
     deleteUserEvent(user, event) {
         user.deleteEvent(event);
     }
-    deleteUser(badUser) {
-        //'are you sure?' prompt
-        this.users = this.users.filter(user => user.username !== badUser)
+    deleteUser(params) {
+        db.one(`DELETE FROM users WHERE username = ${params.username}`)
+        .then(data => {
+            console.log(`user ${data.id} removed from database`);
+        })
+        .catch(error => {
+            console.log('ERROR:', error);
+        });
+        // this.users = this.users.filter(user => user.username !== badUser)
     }
 
     deleteEvent(badEvent) {

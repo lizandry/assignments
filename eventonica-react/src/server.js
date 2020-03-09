@@ -12,6 +12,9 @@ app.use(express.static(path.join(__dirname + '/')));
 app.set(path.join(__dirname + 'App.js'));
 const website = new EventRecommender();
 
+app.get('/express_backend', (req, res) => {
+    res.send(JSON.stringify({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }));
+  });
 // //
 // //something's working. not the right thing tho
 // app.get('/', (req, res) => {
@@ -37,17 +40,11 @@ app.get('/events/:eventId', (req, res) => {
 //     res.status(200).send(website.addEvent(res.body));
 // });
 // //WORKS
-app.get('/express_backend', (req, res) => {
-    
-    res.send(JSON.stringify({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }));
-  });
 app.get('/user', (req, res) => {
     website.getAllUsers().then(data => {
         res.status(200).send(`the first user in this array is ${data[0].username}, who responds to the name ${data[0].title}`);
     });
 });
-// //DOESN'T WORK
-// //add new user to database
 app.post('/user', (req, res) => {
     // console.log('/user post test', req.body); //-> user object
     res.status(200).send(website.addUser(req.body));

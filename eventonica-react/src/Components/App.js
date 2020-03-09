@@ -5,6 +5,7 @@ import '../index.css';
 // import ItemList from "./ItemLists";
 import ItemRow from './ItemRow';
 import UserSubmit from './UserSubmit';
+import Button from './Button';
 
 
 class App extends React.Component {
@@ -29,7 +30,11 @@ class App extends React.Component {
             <div id="my-app">
           
           <h3>make an account</h3>
-          
+          {/* make this dynamic */}
+          <Button
+          username="fd"
+          deleteUser={true}
+          />
         <ItemRow 
         //oh dag!! the properties are whatever i write here
         title="the big party"

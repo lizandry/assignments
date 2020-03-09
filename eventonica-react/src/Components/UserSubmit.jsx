@@ -14,11 +14,11 @@ class UserSubmit extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleUsernameChange(event) {
-        this.setState({username: event.target.value},);
+        this.setState({username: event.target.value});
         // console.log(this.state);
     }
     handleTitleChange(event) {
-        this.setState({title: event.target.value},);
+        this.setState({title: event.target.value});
         // console.log(this.state);
     }
     async handleSubmit(event) {
