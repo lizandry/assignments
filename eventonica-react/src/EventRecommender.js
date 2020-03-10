@@ -15,14 +15,10 @@ class EventRecommender {
     getAllUsers() {
         return db.any('SELECT * FROM users')
             .then(data => {
-                console.log('inside getAllUsers function', data); // print new user id;
+                // console.log('inside getAllUsers function', data);
                 return data;
-            })
-            .catch(error => {
-                console.log('ERROR:', error); // print error;
             });
     }
-
     addEvent(params) {
         this.TheMostUpsettingIDGeneratorInTheUniverse = this.TheMostUpsettingIDGeneratorInTheUniverse + 1;
         let x = new Event(this.TheMostUpsettingIDGeneratorInTheUniverse, params.title, params.date, params.keyword, params.city, params.zip, params.venue, params.description, params.showtime);
@@ -35,23 +31,8 @@ class EventRecommender {
         // this.users.push(x);
         db.one('INSERT INTO users(username, title) VALUES($1, $2) RETURNING id, username, title', [params.username, params.title])
             .then(data => {
-                console.log(`user ${data.id} added to database`); // print new user id;
-                // res.sendStatus(200).send(data);
-            })
-            .catch(error => {
-                console.log('ERROR:', error); // print error;
+                console.log(`user ${data.id} added to database`);
             });
-        // db.one('INSERT INTO users (title) values ($1) RETURNING id, username, title', [req.body.user, req.body.title])
-        //     .then((data) => {
-        //         console.log('DATA value:', data.value);
-        //         console.log('DATA:', data);
-        //         console.log('DATA username:', data.username);
-        //         res.sendStatus(500).send(data);
-
-        //     })
-        //     .catch((error) => {
-        //         console.log('ERROR:', error)
-        //     });
     }
     saveUserEvent(user, event) {
         user.saveEvent(event);
@@ -60,14 +41,9 @@ class EventRecommender {
         user.deleteEvent(event);
     }
     deleteUser(params) {
-        db.one(`DELETE FROM users WHERE username = ${params.username}`)
-        .then(data => {
-            console.log(`user ${data.id} removed from database`);
-        })
-        .catch(error => {
-            console.log('ERROR:', error);
-        });
-        // this.users = this.users.filter(user => user.username !== badUser)
+        db.one('DELETE FROM users WHERE username = $1', params.username)
+        .then(console.log(`deleted user ${params.username}`))
+        .catch(console.log(''));
     }
 
     deleteEvent(badEvent) {

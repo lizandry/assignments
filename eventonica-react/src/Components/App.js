@@ -9,30 +9,38 @@ import Button from './Button';
 
 
 class App extends React.Component {
-    componentDidMount() {
-        // Call our fetch function below once the component mounts
-      this.callBackendAPI()
-        .then(res => this.setState({ data: res.express }))
-        .catch(err => console.log(err));
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+        // this.displayAllUsers = this.displayAllUsers.bind(this);
+        // this.handleTitleChange = this.handleTitleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
-      // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-    async callBackendAPI() {
-      const response = await fetch('/express_backend');
-      const body = await response.json();
-    //   if (response.status !== 200) {
-    //     throw Error(body.message);
-    //   }
-      return body;
-    }
+  //TODO. more difficult than imagined
+// async displayAllUsers() {
+//     await fetch('/users', {
+//         method: 'GET'
+//     })
+//     .then(
+//         (data) => {data.map(e=>{
+
+//            <li>{e.username}</li>;
+//         });
+
+//         }
+//     );
+// }
     render() {
+
         return (
             
             <div id="my-app">
           
           <h3>make an account</h3>
-          {/* make this dynamic */}
+          {/* username is hard-coded right now, but it IS working */}
           <Button
-          username="fd"
+          username="testUser3"
           deleteUser={true}
           />
         <ItemRow 
@@ -42,6 +50,8 @@ class App extends React.Component {
         //onClick
         />
           <UserSubmit />
+              <h3>all users</h3>
+        {/* <ul className='user-list'>{this.displayAllUsers}</ul> */}
           
 {/* list element goes here */}
 
@@ -57,6 +67,9 @@ class App extends React.Component {
             buttonText="add user"
             onSubmit={this.submitUser}
         />; */}
+
+
+        
         </div>
         );
         
@@ -66,3 +79,14 @@ class App extends React.Component {
 }    
 export default App;
 
+// this.callBackendAPI()
+//         .then(res => this.setState({ data: res.express }));
+//         // this.displayAllUsers()
+//         // .then(response => response.json())
+//     //     .then(data => data.map(u => u.username)
+//     }
+//     async callBackendAPI() {
+//       const response = await fetch('/express_backend');
+//       const body = await response.json();
+//       return body;
+    

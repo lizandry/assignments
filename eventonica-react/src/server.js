@@ -7,23 +7,13 @@ const app = express();
 app.use(express.json());
 app.use(compression());
 
-
 app.use(express.static(path.join(__dirname + '/')));
 app.set(path.join(__dirname + 'App.js'));
 const website = new EventRecommender();
 
-app.get('/express_backend', (req, res) => {
-    res.send(JSON.stringify({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }));
-  });
-// //
-// //something's working. not the right thing tho
-// app.get('/', (req, res) => {
-//     console.log('work?')
-//     // res.setHeader('Content-Type', 'text/html');
-//     res.render()
-// res.sendFile(path.join(__dirname + 'index.js'));
-// });
-// //WORKS
+
+
+// WORKS, ONLY NECESSARY FOR /:eventId functionality right now  
 app.get('/events', (req, res) => {
     console.log(req);
     console.log('/events get test', website.events);
@@ -39,32 +29,45 @@ app.get('/events/:eventId', (req, res) => {
 //     console.log('/events post test', req.body);
 //     res.status(200).send(website.addEvent(res.body));
 // });
-// //WORKS
-app.get('/user', (req, res) => {
-    website.getAllUsers().then(data => {
-        res.status(200).send(`the first user in this array is ${data[0].username}, who responds to the name ${data[0].title}`);
+
+
+// /users WORKS, from get to post to delete
+app.get('/users', (req, res) => {
+    website.getAllUsers()
+    .then(data => {
+        console.log('/users get test', data);
+     res.status(200).send(`the first user in this array is ${data[0].username}, who responds to the name ${data[0].title}`);
     });
 });
-app.post('/user', (req, res) => {
+app.post('/users', (req, res) => {
     // console.log('/user post test', req.body); //-> user object
     res.status(200).send(website.addUser(req.body));
 });
-// make delete button next
-app.delete('/user', (req, res) => {
+app.delete('/users', (req, res) => {
     res.status(200).send(website.deleteUser(req.body));
 });
-// // WORKS
-// //gotta look up how to incorporate my 'like' button functionality into this
-app.get('/addEvent', (req, res) => {
+
+// THESE DON'T WORK, right this moment
+// i didn't build my original JS with the idea of add and delete being separate functions
+// i'll get around to fixing it later
+app.get('/bookmarkedEvents', (req, res) => {
     //get granular with this one
     console.log('/account get test', website.users);
-    res.status(200).send(website.events);
+    res.status(200).send(website.users);
 });
-// //DOESN'T WORK
-app.post('/addEvent', (req, res) => {
-    console.log('/account post test', res.body.title);
-    res.status(200).send(website.addEvent(res.body));
+app.post('/bookmarkedEvents', (req, res) => {
+    console.log('/account post test', res.body.id);
+    // res.status(200).send(website.addEvent(res.body));
+});
+app.delete('/bookmarkedEvents', (req, res) => {
+    console.log('/account delete test', res.body.id);
+    // res.status(200).send(website.addEvent(res.body));
 });
 
 
-app.listen(port, () => console.log(`check out localhost, port ${port}!`))
+
+app.listen(port, () => console.log(`check out localhost, port ${port}!`));
+
+// app.get('/express_backend', (req, res) => {
+//     res.send(JSON.stringify({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }));
+//   });

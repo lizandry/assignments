@@ -23,7 +23,7 @@ class UserSubmit extends React.Component {
     }
     async handleSubmit(event) {
         event.preventDefault();
-        await fetch('/user', {
+        await fetch('/users', {
             method: 'POST',
             body: JSON.stringify({
                 username: this.state.username,
@@ -35,8 +35,6 @@ class UserSubmit extends React.Component {
         })
         .then(
             () => console.log('success')
-        )
-        .catch(error => console.log(error)
         );
   
     }

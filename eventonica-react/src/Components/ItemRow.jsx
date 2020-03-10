@@ -26,7 +26,7 @@ class ItemRow extends React.Component {
             <div className='item-row'>
                 stop by {this.props.title} it's gonna be lit, here's a description: {this.props.subtitle}
             </div>
-        )
+        );
 
     }
 
