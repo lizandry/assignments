@@ -9,7 +9,7 @@ class SubmitForm extends React.Component {
         this.state = {
             common_name: '',
             location: '',
-            healthy: true,
+            ishealthy: false,
             sighter_email: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,30 +22,31 @@ class SubmitForm extends React.Component {
         this.setState({location: event.target.value});
         console.log(this.state);
     }
-    handleHealthChange(event) {
-        this.setState({healthy: event.target.value});
+    handleHealthChange = (event) => {
+        this.setState({ishealthy: event.target.checked});
+        console.log(this.state);
     }
     handleEmailChange = (event) => {
         this.setState({sighter_email: event.target.value});
         console.log(this.state);
     }
+    
     async handleSubmit(event) {
         event.preventDefault();
-        await fetch('/sightings', {
+        await fetch('sightings', {
             method: 'POST',
             body: JSON.stringify({
                 common_name: this.state.common_name,
                 location: this.state.location,
-                healthy: this.state.healthy,
+                ishealthy: this.state.ishealthy,
                 sighter_email: this.state.sighter_email
             }),
             headers: {
-              'Content-type': 'application/json; charset=UTF-8'
+              'Content-Type': 'application/json charset=UTF-8',
+              "Accept": "application/json"
             }
-        })
-        .then(
-            () => console.log('success')
-        );
+        }).then(console.log('state', this.state))
+        .then((res) => res.json());
   
     }
     
@@ -71,7 +72,10 @@ class SubmitForm extends React.Component {
                     check if the animal is healthy
                 </label>
                 <input type='checkbox'
-                        name='healthy' value={this.state.healthy} onChange={this.handleHealthChange} className='check-box' id='location-input'>
+                        name='ishealthy' value={this.state.ishealthy} 
+                        checked={this.state.ishealthy}
+                        onChange={this.handleHealthChange} 
+                        className='check-box' id='location-input'>
                     </input>
                     <p></p>
                 <label className='submit-form-labels'>
@@ -82,7 +86,7 @@ class SubmitForm extends React.Component {
                     </input>
                            <p></p>
                     <input 
-                        type='submit'  className='submit-button' value='register-animal-sighting' onClick={this.handleSubmit} 
+                        type='submit'  className='submit-button' value='register sighting' onClick={this.handleSubmit} 
                     />
             </form> 
         );
