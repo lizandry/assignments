@@ -1,5 +1,6 @@
 import React from 'react';
 import '../index.css';
+import SubmitForm from 'SubmitForm'
 
 
 class App extends React.Component {
@@ -7,8 +8,9 @@ class App extends React.Component {
     return (
     <div className="App">
       <header className="App-header">
+      <SubmitForm />
       </header>
-<h1>work</h1>
+
 
 
     </div>
