@@ -5,16 +5,10 @@ const express = require('express');
 // import compression from 'compression';
 const app = express();
 app.use(express.json());
-const pgp = require('pg-promise')
+const pgp = require('pg-promise')();
 // import pgp from 'pg-promise'
 const db = pgp('postgres://postgres@localhost:5432/animal-tracker')
 
-
-app.get('/', (req, res) =>
-  res.render('index', {
-    title: 'animal tracker'
-  })
-);
 
 app.get('/sightings', (req, res) => {
     // db.any(`SELECT * FROM sightings`)

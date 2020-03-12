@@ -11,31 +11,27 @@ class SubmitForm extends React.Component {
             location: '',
             healthy: true,
             sighter_email: ''
-
         };
-        this.HandleCommonNameChange = this.HandleCommonNameChange.bind(this);
-        this.HandleLocationChange = this.HandleLocationChange.bind(this);
-        this.HandleHealthChange = this.HandleHealthChange.bind(this);
-        this.HandleSighterEmailChange = this.HandleSighterEmailChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleCommonNameChange(event) {
+    handleCommonNameChange = (event) => {
         this.setState({common_name: event.target.value});
-        // console.log(this.state);
+        console.log(this.state);
     }
-    handleLocationChange(event) {
-        this.setState({Location: event.target.value});
-        // console.log(this.state);
+    handleLocationChange = (event) => {
+        this.setState({location: event.target.value});
+        console.log(this.state);
     }
     handleHealthChange(event) {
         this.setState({healthy: event.target.value});
     }
-    handleSighterEmailChange(event) {
+    handleEmailChange = (event) => {
         this.setState({sighter_email: event.target.value});
+        console.log(this.state);
     }
     async handleSubmit(event) {
         event.preventDefault();
-        await fetch('/users', {
+        await fetch('/sightings', {
             method: 'POST',
             body: JSON.stringify({
                 common_name: this.state.common_name,
@@ -68,26 +64,26 @@ class SubmitForm extends React.Component {
                     location sighted:
                 </label>
                     <input type='text'
-                        value={this.state.title} name='title' onChange={this.HandleLocationChange} className='empty-text-field' id='location-input'>
+                        name='location' value={this.state.location} onChange={this.handleLocationChange} className='empty-text-field' id='location-input'>
                     </input>
                     <p></p>
                 <label className='submit-form-labels'>
-                    healthy?
+                    check if the animal is healthy
                 </label>
-                    <input type='checkbox'
-                        value={this.state.title} name='healthy' onChange={this.handleHealthChange} className='check-box' id='healthy-input'>
+                <input type='checkbox'
+                        name='healthy' value={this.state.healthy} onChange={this.handleHealthChange} className='check-box' id='location-input'>
                     </input>
                     <p></p>
                 <label className='submit-form-labels'>
                     your email address:
                 </label>
-                    <input type='text'
-                        value={this.state.title} name='title' onChange={this.handleSighterEmailChange} className='empty-text-field' id='sighter-email-inpuu'>
+                <input type='text'
+                        name='location' value={this.state.sighter_email} onChange={this.handleEmailChange} className='empty-text-field' id='location-input'>
                     </input>
-                    
+                           <p></p>
                     <input 
-                        type='submit'  className='submit-button' value='create account' onClick={this.handleSubmit} 
-                    /> 
+                        type='submit'  className='submit-button' value='register-animal-sighting' onClick={this.handleSubmit} 
+                    />
             </form> 
         );
     }
