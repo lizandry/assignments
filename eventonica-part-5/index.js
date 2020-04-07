@@ -53,7 +53,6 @@ app.post('/signup', (req, res) => {
     console.log("WHAT'S THIS", req.body.title);
     res.send(website.addUser(req.body));
 })
-
 //gotta look up how to incorporate my 'like' button functionality into this
 app.get('/account', (req, res) => {
     //get granular with this one
@@ -67,3 +66,4 @@ app.post('/account', (req, res) => {
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
